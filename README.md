@@ -1,5 +1,5 @@
 
-![GitHub Logo](https://image.freepik.com/free-icon/tumblr-website-logo_318-40617.jpg)
+![GitHub Logo](http://vectorlogofree.com/wp-content/uploads/2014/08/25690-tumblr-logo-icon-vector-icon-vector-eps.png)
 
 # Tumblr clone
 ---
