@@ -1,21 +1,12 @@
-# Access Code Generator
-Welcome to the Access Code Generator! This is a scaffolding built using Node, Express, React, and Sequelize.
+# Tumblr clone
+---
+## A clone of Tumblr built from scratch using Agile Software Development strategy
 
-## Database Setup
-You'll first need to setup a database for the project. Then, in the `back/env/development.js` file you'll need to change the 'DATABASE_URI' to your specific database setup.
+### The Front-end was built using:
+- React JS
+- Redux JS
 
-## Start
-First: `npm install`
-To start: `npm start`
+### The Back-end was built using:
+- Express JS
+- Node JS
 
-## Testing
-You can add new tests in the `test` folder.
-
-To test: `npm test`
-
-Your tests are also automatically called as part of `npm start`
-
-## Authentication
-Authentication (aka login) is mostly setup, but still missing a couple key parts: a `login` and `auth` route in your API. You will need to create them in order for login to fully work.
-
-You can see AJAX calls for these routes in the `Login.jsx` and `App.jsx` components
