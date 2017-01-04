@@ -4,3 +4,5 @@
 
 #Ignores Node Modules
 node_modules
+
+front/public
