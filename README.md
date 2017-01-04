@@ -1,6 +1,3 @@
-
-![GitHub Logo](http://vectorlogofree.com/wp-content/uploads/2014/08/25690-tumblr-logo-icon-vector-icon-vector-eps.png)
-
 # Tumblr clone
 ---
 ## A clone of Tumblr built from scratch using Agile Software Development strategy
@@ -13,3 +10,4 @@
 - Express JS
 - Node JS
 
+![GitHub Logo](http://vectorlogofree.com/wp-content/uploads/2014/08/25690-tumblr-logo-icon-vector-icon-vector-eps.png)
