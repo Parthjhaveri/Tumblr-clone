@@ -1,3 +1,6 @@
+
+![GitHub Logo](https://image.freepik.com/free-icon/tumblr-website-logo_318-40617.jpg)
+
 # Tumblr clone
 ---
 ## A clone of Tumblr built from scratch using Agile Software Development strategy
