@@ -1,0 +1,6 @@
+#Ignores OS Junk Files
+[Tt]humbs.db
+*.DS_Store
+
+#Ignores Node Modules
+node_modules
