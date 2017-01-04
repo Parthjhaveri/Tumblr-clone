@@ -3,6 +3,8 @@ import $ from 'jQuery';
 import {Navbar} from '../index';
 
 const App = React.createClass({
+
+  
   componentDidMount() {
     $.ajax({
       method: 'GET',
