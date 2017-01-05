@@ -11,6 +11,7 @@ const Post = require('../../models').Post
 const getPost = ((request,response) => {
 	Post.findAll()
 		.then(data => {
+      console.log('DATA:', data)
 			response.send(data)
 		})
 		.catch(error => {

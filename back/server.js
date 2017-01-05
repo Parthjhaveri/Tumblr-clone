@@ -35,3 +35,5 @@ db.sequelize.sync().then( () => {
 	console.log('Server running at http://locathost:8080')
 	app.listen(8080)
 })
+
+module.exports = app;
