@@ -5,4 +5,5 @@
 #Ignores Node Modules
 node_modules
 
-front/public/*
+front/public/bundle.js
+front/public/bundle.js.map
