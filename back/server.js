@@ -6,13 +6,6 @@ const routes = require('./routes');
 const userRouteFile = routes.userRouteFile;
 const postRouteFile = routes.postRouteFile;
 
-
-app.use('/api/user', userRouteFile)
-app.use('/api/post', postRouteFile)
-
-const db = require('../models')
-
-
 //postman 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
@@ -20,9 +13,16 @@ app.use(bodyparser.json())
 //images 
 app.use(express.static('public'))
 
+app.use('/api/user', userRouteFile)
+app.use('/api/post', postRouteFile)
+
+const db = require('../models')
+
+
+
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/frontend/index.html'))
+  res.sendFile(path.join(__dirname, '../front/index.html'))
 })
 
 
