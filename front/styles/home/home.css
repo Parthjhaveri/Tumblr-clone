@@ -1,0 +1,25 @@
+/* FRONT > COMPONENTS > HOME > Home.js */
+
+/* Home.js */
+.home-container {
+	display: flex;
+	flex-direction: row;
+	background: olive;
+	padding: 10px 10px;
+}
+
+.timeline-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	width: 70%;
+	background: mediumspringgreen;
+}
+
+.sidebar-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	width: 30%;
+	background: mediumturquoise;
+}

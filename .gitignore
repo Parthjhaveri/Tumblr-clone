@@ -5,4 +5,4 @@
 #Ignores Node Modules
 node_modules
 
-front/public
+front/public/*

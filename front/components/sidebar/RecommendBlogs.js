@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/sidebar/site-sidebar.scss';
+import '../../styles/sidebar/site-sidebar.css';
 
 const RecommendBlogs = React.createClass({
 	render() {

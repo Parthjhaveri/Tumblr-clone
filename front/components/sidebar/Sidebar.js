@@ -1,7 +1,7 @@
 import React from 'react';
-import RecommendBlogs from 'RecommendBlogs';
-import BlogRadar from 'BlogRadar';
-import '../styles/sidebar/site-sidebar.scss';
+import RecommendBlogs from './RecommendBlogs';
+import BlogRadar from './BlogRadar';
+import '../../styles/sidebar/site-sidebar.css';
 
 const Sidebar = React.createClass({
 	render() {

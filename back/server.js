@@ -18,11 +18,11 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
 
 //images 
-app.use(express.static('public'))
+app.use(express.static('./front/public'))
 
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/frontend/index.html'))
+  res.sendFile(path.join(__dirname, '../front/index.html'))
 })
 
 
@@ -30,6 +30,6 @@ app.get('/*', function(req, res) {
 
 //connect data base to a server 
 db.sequelize.sync().then( () => {
-	console.log('server will be running on 8080')
+	console.log('Server running at http://locathost:8080')
 	app.listen(8080)
 })
