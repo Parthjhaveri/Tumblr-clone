@@ -11,7 +11,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
 
 //images 
-app.use(express.static('public'))
+app.use(express.static('./front/public'))
 
 app.use('/api/user', userRouteFile)
 app.use('/api/post', postRouteFile)
