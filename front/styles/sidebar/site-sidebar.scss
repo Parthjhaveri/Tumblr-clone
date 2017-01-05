@@ -1,0 +1,24 @@
+/* FRONT > COMPONENTS > SIDEBAR > Sidebar.js
+FRONT > COMPONENTS > SIDEBAR > RecommendBlogs.js
+FRONT > COMPONENTS > SIDEBAR > BlogRadar.js */
+
+/* Sidebar.js */
+.sidebar-container {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 10px;
+}
+
+.sidebar-recommend-blogs-container {
+	background: springgreen;
+	padding: 5px 5px;
+}
+
+.sidebar-blogradar-container {
+	background: turquoise;
+	padding: 5px 5px;
+}
+
+/* RecommendBlogs.js */
+
+/* BlogRadar */
