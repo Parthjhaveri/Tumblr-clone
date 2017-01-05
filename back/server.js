@@ -10,6 +10,9 @@ const postRouteFile = routes.postRouteFile;
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
 
+//images 
+app.use(express.static('public'))
+
 app.use('/api/user', userRouteFile)
 app.use('/api/post', postRouteFile)
 
@@ -17,12 +20,9 @@ const db = require('../models')
 
 
 
-//images 
-app.use(express.static('public'))
-
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/frontend/index.html'))
+  res.sendFile(path.join(__dirname, '../front/index.html'))
 })
 
 
