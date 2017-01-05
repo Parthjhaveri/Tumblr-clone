@@ -8,21 +8,21 @@ const SiteNavigation = React.createClass({
 				<div className="navigation-container">
 					<div className="navigation-left">
 						<div className="navigation-tumblr-logo">
-							
+							TUMBLR LOGO
 						</div>
 						<div className="navigation-search">
-							
+							SEARCH BAR
 						</div>
 					</div>
 					<div className="naviagtion-right">
 						<div className="navigation-button-timeline">
-							
+							TIMELINE BUTTON
 						</div>
 						<div className="navigation-button-user-profile">
-							
+							USER PROFILE BUTTON
 						</div>
 						<div className="navigation-button-create-post">
-							
+							CREATE POST BUTTON
 						</div>
 					</div>
 				</div>
