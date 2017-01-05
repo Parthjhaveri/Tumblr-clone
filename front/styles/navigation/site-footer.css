@@ -1,0 +1,42 @@
+/* FRONT > COMPONENTS > NAVIGATION > SiteFooter.js
+
+/* SiteFooter.js */
+
+.footer-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: auto;
+	background: red;
+	padding: 5px 5px;
+}
+
+.footer-about {
+	background: paleturquoise;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.footer-apps {
+	background: salmon;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.footer-legal {
+	background: orchid;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.footer-privacy {
+	background: palegoldenrod;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.footer-keyboard {
+	background: palegreen;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}

@@ -1,0 +1,67 @@
+/* FRONT > COMPONENTS > TIMELINE> Timeline.js
+FRONT > COMPONENTS > TIMELINE> IndividualPost.js */
+
+/* Timeline.js */
+.timeline-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	background: yellow;
+}
+
+.timeline-post-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	background: yellowgreen;
+}
+
+/* IndividualPost.js */
+.post-container {
+	display: flex;
+	flex-direction: row;
+	padding: 5px 5px;
+	background: thistle;
+}
+
+.post-left-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	background: tomato;
+}
+
+.post-right-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 5px;
+	background: teal;
+}
+
+.post-left-photo {
+	background: tan;
+	padding: 10px 10px;
+}
+
+.post-right-header {
+	background: slateblue;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.post-right-content {
+	background: rosybrown;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+.post-right-footer {
+	background: rebeccapurple;
+	margin: 5px 5px;
+	padding: 5px 5px;
+}
+
+
+
+
+

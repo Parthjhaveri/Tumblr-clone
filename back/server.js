@@ -18,6 +18,8 @@ app.use('/api/post', postRouteFile)
 
 const db = require('../models')
 
+//images 
+app.use(express.static('./front/public'))
 
 
 
@@ -30,6 +32,6 @@ app.get('/*', function(req, res) {
 
 //connect data base to a server 
 db.sequelize.sync().then( () => {
-	console.log('server will be running on 8080')
+	console.log('Server running at http://locathost:8080')
 	app.listen(8080)
 })

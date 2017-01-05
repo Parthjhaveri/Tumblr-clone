@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/navigation/site-navigation.scss';
+import '../../styles/navigation/site-navigation.css';
 
 const SiteNavigation = React.createClass({
 	render() {
