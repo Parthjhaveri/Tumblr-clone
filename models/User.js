@@ -35,10 +35,12 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        User.belongsToMany(User, { as: 'Follows', through: 'Following' })
+        User.belongsToMany(User, { as: 'Follows', through: 'Following' });
+        User.hasMany(models.Post);
       }
     }
   });
 
   return User;
 }
+
