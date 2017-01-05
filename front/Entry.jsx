@@ -1,9 +1,16 @@
+//Import REACT Modules
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Routes} from './components';
-import './App.css';
+import { render } from 'react-dom';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-ReactDOM.render(
-  <Routes />,
-  document.getElementById('app')
-);
+//Import Redux Provider & Store
+import { Provider } from 'react-redux';
+import store, { history } from './store';
+
+//Import CSS
+
+//Import Components
+
+//Build Router Component
+
+
