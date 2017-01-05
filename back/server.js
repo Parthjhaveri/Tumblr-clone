@@ -6,19 +6,21 @@ const routes = require('./routes');
 const userRouteFile = routes.userRouteFile;
 const postRouteFile = routes.postRouteFile;
 
+//postman 
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json())
+
+//images 
+app.use(express.static('public'))
 
 app.use('/api/user', userRouteFile)
 app.use('/api/post', postRouteFile)
 
 const db = require('../models')
 
-
-//postman 
-app.use(bodyparser.urlencoded({ extended: false }));
-app.use(bodyparser.json())
-
 //images 
 app.use(express.static('./front/public'))
+
 
 
 app.get('/*', function(req, res) {
