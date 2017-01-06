@@ -9,10 +9,10 @@
 	padding: 10px 10px;
 }
 
-.naviation-left {
+.navigation-left {
 	display: flex;
 	flex-direction: row;
-	width: auto;
+	width: 50%;
 	height: auto;
 	background: salmon;
 	margin: 5px 5px;
@@ -21,13 +21,13 @@
 .navigation-right {
 	display: flex;
 	flex-direction: row;
-	width: auto;
+	width: 50%;
 	height: auto;
 	background: sandybrown;
 	margin: 5px 5px;
 }
 
-.naviation-tumblr-logo {
+.navigation-tumblr-logo {
 	background: lightpink;
 	margin: 5px 5px;
 }

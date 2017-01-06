@@ -14,7 +14,7 @@ const SiteNavigation = React.createClass({
 							SEARCH BAR
 						</div>
 					</div>
-					<div className="naviagtion-right">
+					<div className="navigation-right">
 						<div className="navigation-button-timeline">
 							TIMELINE BUTTON
 						</div>

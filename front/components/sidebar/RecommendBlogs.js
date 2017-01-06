@@ -5,9 +5,11 @@ const RecommendBlogs = React.createClass({
 	render() {
 		return(
 			<div>
-				<h1>
-					Recommend Blogs Component
-				</h1>
+				<div className="recommend-blogs-container">
+					<h3>
+						Recommended Blogs Component
+					</h3>
+				</div>
 			</div>
 		)
 	}
