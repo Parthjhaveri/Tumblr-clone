@@ -13,7 +13,7 @@ const Post = require('../../models').Post;
 const getPost = ((request,response) => {
 	Post.findAll()
 		.then(data => {
-      console.log('DATA:', data)
+      		console.log('DATA:', data)
 			response.send(data)
 		})
 		.catch(error => {
@@ -28,7 +28,13 @@ const getUserPosts = (req, res) => {
 		return user.getPosts()
 	})
 	.then((posts) => {
-		res.send(posts);
+		res.send('Posts: ', posts);
+	})
+	// SORT THEM IN REVERSE
+	.then((posts) => {
+		posts.sort(function(a,b) {
+			return (b - a);
+		})
 	})
 	.catch( (err) => {
 		console.log("ERROR GETTING USERS POSTS:", err)
@@ -36,7 +42,20 @@ const getUserPosts = (req, res) => {
 	})
 }
 
+// GENERATE TIMELINE
+// SO WE WANT THE MOST RECENT POST BY EVERY USER (DESCENDING DATE AND TIME)
+// const getTimeline = (req, res) => {
+// 	Post.get('/api/feed/:userId')
+// 		.then(data => {
+// 			console.log('Data:', data)
+// 			response.send(data)
+// 		})
 
+// }
+
+// songRouter.get('/',(req,res)=>{
+//     Song.findAll({include:[Artist,Genre]}).then((song)=> {res.send(song)});
+// })
 
 
 
