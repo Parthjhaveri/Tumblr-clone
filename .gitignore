@@ -4,3 +4,9 @@
 
 #Ignores Node Modules
 node_modules
+
+
+front/public/bundle.js
+front/public/bundle.js.map
+
+config/config.json

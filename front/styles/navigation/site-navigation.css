@@ -1,0 +1,53 @@
+/* FRONT > COMPONENTS > NAVIGATION > Navigation.js*/
+
+.navigation-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: auto;
+	background: palegreen;
+	padding: 10px 10px;
+}
+
+.navigation-left {
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	height: auto;
+	background: salmon;
+	margin: 5px 5px;
+}
+
+.navigation-right {
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	height: auto;
+	background: sandybrown;
+	margin: 5px 5px;
+}
+
+.navigation-tumblr-logo {
+	background: lightpink;
+	margin: 5px 5px;
+}
+
+.navigation-search {
+	background: peachpuff;
+	margin: 5px 5px;
+}
+
+.navigation-button-timeline {
+	background: lightskyblue;
+	margin: 5px 5px;
+}
+
+.navigation-button-user-profile {
+	background: mediumpurple;
+	margin: 5px 5px;
+}
+
+.navigation-button-create-post {
+	background: mistyrose;
+	margin: 5px 5px;
+}
