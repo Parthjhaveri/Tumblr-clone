@@ -49,7 +49,9 @@ const getUser = ((request,response) => {
 
 //see who you're following
 const getUsersYouFollow = ((request,response) => {
-  User.findAll()
+  Following.findAll({
+      where:{UserId:request.params.userId}
+    })
     .then(data => {
       response.send(data)
     })
