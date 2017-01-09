@@ -48,15 +48,17 @@ const getUser = ((request,response) => {
 })
 
 //see who you're following
-// const getUsersYouFollow = ((request,response) => {
-//   User.findAll()
-//     .then(data => {
-//       response.send(data)
-//     })
-//     .catch(error => {
-//       response.send(error)
-//     })
-// })
+const getUsersYouFollow = ((request,response) => {
+  Following.findAll({
+      where:{UserId:request.params.userId}
+    })
+    .then(data => {
+      response.send(data)
+    })
+    .catch(error => {
+      response.send(error)
+    })
+})
 
 //search for blogs or people to follow
 
@@ -71,8 +73,8 @@ router.route('/')
 router.route('/:username')
   .get(getUser)
 
-// router.route('/:userId')
-//   .get(getUsersYouFollow)
+router.route('/:userId')
+  .get(getUsersYouFollow)
 
 
 /////////////////////
