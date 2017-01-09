@@ -6,7 +6,7 @@
 node_modules
 
 
-front/public/bundle.js
-front/public/bundle.js.map
+bundle.js
+bundle.js.map
 
 config/config.json
