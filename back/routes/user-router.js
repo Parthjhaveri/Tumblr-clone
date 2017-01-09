@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const User = require('../../models').User
-
+const Following = require('../../models')["Following_Trackers"]
 
 
 
@@ -18,7 +18,7 @@ const getAllUsers = ((request,response) => {
 })
 
 const makeNewUser = ((request,response) => {
-  console.log(request.body);
+  //console.log(request.body);
   User.create({
     username:request.body.username,
     password:request.body.password,
@@ -47,11 +47,26 @@ const getUser = ((request,response) => {
     })
 })
 
+//follow someone by username
+const followSomeone = ((request,response) => {
+  User.findAll({
+      where: {username: request.params.username}
+    })
+    .then(data => {
+      data[0].addFollowing(request.params.userId);
+      response.send(data);
+    })
+    .catch(error => {
+      response.send(error)
+    })
+})
+
 //see who you're following
 const getUsersYouFollow = ((request,response) => {
-  Following.findAll({
-      where:{UserId:request.params.userId}
-    })
+  //res.send('Hello')
+   Following.findAll({
+    where: {FollowingId: request.params.userId}
+   })
     .then(data => {
       response.send(data)
     })
@@ -73,7 +88,14 @@ router.route('/')
 router.route('/:username')
   .get(getUser)
 
+<<<<<<< HEAD
 router.route('/:userId')
+=======
+router.route('/follow/:username/:userId')
+  .get(followSomeone)
+
+router.route('/following/:userId')
+>>>>>>> 32e5fcbd89e0ce137a9884a137f04fbe5ec6bb3d
   .get(getUsersYouFollow)
 
 
