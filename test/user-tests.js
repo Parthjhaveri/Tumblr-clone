@@ -30,7 +30,7 @@ describe('User tests', () => {
     })
   });
 
-// tests GET one user by id
+// tests GET one user by name
   it(`'/:username' should return one user`, (done) => {
     supertest(server)
     .get('/api/user/user1')
@@ -56,7 +56,4 @@ describe('User tests', () => {
       done();
     })
   });
-
-
-
 })

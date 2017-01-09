@@ -32,7 +32,7 @@ app.get('/*', function(req, res) {
 
 //connect data base to a server 
 db.sequelize.sync().then( () => {
-	console.log('Server running at http://locathost:8080')
+	console.log('Server running at http://localhost:8080')
 	app.listen(8080)
 })
 
