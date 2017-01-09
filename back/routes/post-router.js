@@ -9,6 +9,21 @@ const Post = require('../../models').Post;
 ////FUNCTION/////////
 /////////////////////
 
+//MAKE NEW POST
+const makePost = ((request,response) => {
+  //console.log(request.body);
+  Post.create({
+    title:request.body.title,
+    content:request.body.content
+  })
+    .then(data => {
+      response.send(data)
+    })
+    .catch(error => {
+      response.send(error)
+    })
+})
+
 // GET ONE POST
 const getPost = ((request,response) => {
 	Post.findAll()
@@ -64,7 +79,7 @@ const getUserPosts = (req, res) => {
 /////////////////////
 router.route('/')
 	.get(getPost)
-
+	.post(makePost)
 
 /////////////////////
 /////EXPORTS////////
