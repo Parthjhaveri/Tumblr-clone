@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router()
 const User = require('../../models').User
+const Following = require('../../models')["Following_Trackers"]
 
 
 
-
+console.log(Following)
 /////////////////////
 ////FUNCTION/////////
 const getAllUsers = ((request,response) => {
@@ -18,7 +19,7 @@ const getAllUsers = ((request,response) => {
 })
 
 const makeNewUser = ((request,response) => {
-  console.log(request.body);
+  //console.log(request.body);
   User.create({
     username:request.body.username,
     password:request.body.password,
@@ -47,15 +48,37 @@ const getUser = ((request,response) => {
     })
 })
 
-//see who you're following
-const getUsersYouFollow = ((request,response) => {
-  User.findAll()
+//follow someone by username
+const followSomeone = ((request,response) => {
+  User.findAll({
+      where: {username: request.params.username}
+    })
     .then(data => {
-      response.send(data)
+      data[0].addFollowing(request.params.userId);
+      response.send(data);
     })
     .catch(error => {
       response.send(error)
     })
+})
+
+//see who you're following
+const getUsersYouFollow = ((request,response) => {
+  res.send('Hello')
+  User.findAll()
+  // .then(user => {
+  //   return user.getUser()
+  // })
+  .then(users =>{
+    response.send("Happy")
+  })
+  // Following.findAll({})
+  //   .then(data => {
+  //     response.send(data)
+  //   })
+  //   .catch(error => {
+  //     response.send(error)
+  //   })
 })
 
 //search for blogs or people to follow
@@ -71,7 +94,10 @@ router.route('/')
 router.route('/:username')
   .get(getUser)
 
-router.route('/:userId')
+router.route('/follow/:username/:userId')
+  .get(followSomeone)
+
+router.route('/following/:userId')
   .get(getUsersYouFollow)
 
 
