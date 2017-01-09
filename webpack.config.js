@@ -1,3 +1,5 @@
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+
 module.exports = {
   entry: "./front/Entry.jsx",
   output: {
@@ -23,5 +25,8 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ["", ".js", ".jsx" ]
-  }
+  },
+  plugins: [
+    new LiveReloadPlugin()
+  ]
 };
