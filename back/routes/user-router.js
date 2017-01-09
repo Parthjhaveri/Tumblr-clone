@@ -5,7 +5,6 @@ const Following = require('../../models')["Following_Trackers"]
 
 
 
-console.log(Following)
 /////////////////////
 ////FUNCTION/////////
 const getAllUsers = ((request,response) => {
@@ -65,15 +64,9 @@ const followSomeone = ((request,response) => {
 //see who you're following
 const getUsersYouFollow = ((request,response) => {
   //res.send('Hello')
-  // User.findAll()
-  // .then(user => {
-  //   return user.getUser()
-  // })
-  // .then(users =>{
-  //   response.send("Happy")
-  // })
-  
-  Following.findAll({})
+   Following.findAll({
+    where: {FollowingId: request.params.userId}
+   })
     .then(data => {
       response.send(data)
     })
