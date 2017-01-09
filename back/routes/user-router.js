@@ -64,21 +64,22 @@ const followSomeone = ((request,response) => {
 
 //see who you're following
 const getUsersYouFollow = ((request,response) => {
-  res.send('Hello')
-  User.findAll()
+  //res.send('Hello')
+  // User.findAll()
   // .then(user => {
   //   return user.getUser()
   // })
-  .then(users =>{
-    response.send("Happy")
-  })
-  // Following.findAll({})
-  //   .then(data => {
-  //     response.send(data)
-  //   })
-  //   .catch(error => {
-  //     response.send(error)
-  //   })
+  // .then(users =>{
+  //   response.send("Happy")
+  // })
+  
+  Following.findAll({})
+    .then(data => {
+      response.send(data)
+    })
+    .catch(error => {
+      response.send(error)
+    })
 })
 
 //search for blogs or people to follow
