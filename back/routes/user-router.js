@@ -88,14 +88,10 @@ router.route('/')
 router.route('/:username')
   .get(getUser)
 
-<<<<<<< HEAD
-router.route('/:userId')
-=======
 router.route('/follow/:username/:userId')
   .get(followSomeone)
 
 router.route('/following/:userId')
->>>>>>> 32e5fcbd89e0ce137a9884a137f04fbe5ec6bb3d
   .get(getUsersYouFollow)
 
 

@@ -18,7 +18,7 @@ describe('User tests', () => {
   });
 
 // tests GET all users
-  it(`'/' should respond with all users`, (done) => {
+  it(`'/' GET should respond with all users`, (done) => {
     supertest(server)
     .get('/api/user')
     .end((err, res) => {
@@ -27,33 +27,56 @@ describe('User tests', () => {
       expect(res.body).be.a('array');
       expect(res.body.length).equal(3);
       done();
-    })
+    });
   });
+
 
 // tests GET one user by name
   it(`'/:username' should return one user`, (done) => {
     supertest(server)
     .get('/api/user/user1')
     .end((err, res) => {
-      console.log(res.body);
+      // console.log(res.body);
       expect(res.body).be.a('array');
       expect(res.body.length).equal(1);
       expect(res.body[0].id).equal(1);
       done();
-    })
-  })
+    });
+  });
 
 // tests POST a new user
-  it(`'/' should respond with a new user`, (done) => {
+  it(`'/' POST should respond with a new user`, (done) => {
     supertest(server)
     .post('/api/user')
     .type('form')
     .send({username: 'user4', password: 'pass4', firstName: 'first4', lastName: 'last4', email: 'email4@email.com'})
     .end((err, res) => {
-      console.log(res.body);
+      // console.log(res.body);
       expect(res.body).exist;
       expect(res.body).be.a('object');
       done();
-    })
+    });
   });
-})
+
+  it(`'/follow/:username/:userId' GET should respond with new user you are following`, (done) => {
+    supertest(server)
+    .get('/api/user/follow/user2/1')
+    .end((err, res) => {
+      console.log(res.body);
+      expect(res.body).be.a('array');
+      expect(res.body.length).equal(1)
+      done();
+    });
+  });
+
+  it(`'/following/:userId' GET should respond with all users who follow you`, (done) => {
+    supertest(server)
+    .get('/api/user/following/1')
+    .end((err, res) => {
+      console.log(res.body);
+      expect(res.body).be.a('array');
+      expect(res.body.length).equal(1);
+      done();
+    });
+  });
+});
