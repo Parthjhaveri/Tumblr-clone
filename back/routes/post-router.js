@@ -9,11 +9,26 @@ const Post = require('../../models').Post;
 ////FUNCTION/////////
 /////////////////////
 
+//MAKE NEW POST
+const makePost = ((request,response) => {
+  //console.log(request.body);
+  Post.create({
+    title:request.body.title,
+    content:request.body.content
+  })
+    .then(data => {
+      response.send(data)
+    })
+    .catch(error => {
+      response.send(error)
+    })
+})
+
 // GET ONE POST
 const getPost = ((request,response) => {
 	Post.findAll()
 		.then(data => {
-      console.log('DATA:', data)
+      		console.log('DATA:', data)
 			response.send(data)
 		})
 		.catch(error => {
@@ -28,7 +43,13 @@ const getUserPosts = (req, res) => {
 		return user.getPosts()
 	})
 	.then((posts) => {
-		res.send(posts);
+		res.send('Posts: ', posts);
+	})
+	// SORT THEM IN REVERSE
+	.then((posts) => {
+		posts.sort(function(a,b) {
+			return (b - a);
+		})
 	})
 	.catch( (err) => {
 		console.log("ERROR GETTING USERS POSTS:", err)
@@ -36,7 +57,20 @@ const getUserPosts = (req, res) => {
 	})
 }
 
+// GENERATE TIMELINE
+// SO WE WANT THE MOST RECENT POST BY EVERY USER (DESCENDING DATE AND TIME)
+// const getTimeline = (req, res) => {
+// 	Post.get('/api/feed/:userId')
+// 		.then(data => {
+// 			console.log('Data:', data)
+// 			response.send(data)
+// 		})
 
+// }
+
+// songRouter.get('/',(req,res)=>{
+//     Song.findAll({include:[Artist,Genre]}).then((song)=> {res.send(song)});
+// })
 
 
 
@@ -45,7 +79,7 @@ const getUserPosts = (req, res) => {
 /////////////////////
 router.route('/')
 	.get(getPost)
-
+	.post(makePost)
 
 /////////////////////
 /////EXPORTS////////
