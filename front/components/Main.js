@@ -15,8 +15,8 @@ const Main = React.createClass({
 					</Link>
 				</h1>
 				<SiteNavigation />
-				<CreatePost />
-				{React.cloneElement(this.props.children, this.props)}
+				{this.props.CreatePostContainer}
+				{React.cloneElement(this.props.children, this.props, this.props.Home)}
 			</div>
 		)
 	}
