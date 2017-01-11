@@ -3,8 +3,6 @@ const router = express.Router();
 const Post = require('../../models').Post;
 
 
-
-
 /////////////////////
 ////FUNCTION/////////
 /////////////////////
@@ -44,18 +42,48 @@ const getUserPosts = (req, res) => {
 
 // GENERATE TIMELINE
 // SO WE WANT THE MOST RECENT POST BY EVERY USER (DESCENDING DATE AND TIME)
-// const getTimeline = (req, res) => {
-// 	Post.get('/api/feed/:userId')
-// 		.then(data => {
-// 			console.log('Data:', data)
-// 			response.send(data)
-// 		})
+const getTimeline = (req, res) => {
+		
+		// Post.get('/api/feed/:userId')
+		// .then(data => {
+		// 	console.log('Data:', data)
+		// 	response.send(data)
+		// })
+		// // SORT THEM IN REVERSE
+		// .then((posts) => {
+		// 	posts.sort(function(a,b) {
+		// 		return (b - a);
+		// 	})
+		// })
 
-// }
+		Post.findAll({ limit: 20, order: '"updatedAt" DESC' })
+		.catch( (err) => {
+			console.log("ERROR GETTING TIMELINE:", err)
+			res.sendStatus(500)
+		})
+}
 
-// songRouter.get('/',(req,res)=>{
-//     Song.findAll({include:[Artist,Genre]}).then((song)=> {res.send(song)});
-// })
+// UPDATE A SPECIFIC POST
+const updatePost = () => {
+		Post.findById({
+			id: req.params.id			
+		})
+		.then((post) => {
+			console.log('Post: ', post)
+		})
+}
+
+// SEE WHO YOU'RE FOLLOWING
+const seeFollowing = () => {
+		User.findById(req.params.userId)
+		.then((user) => {
+			return user.seeFollowing()
+		})
+		.catch( (err) => {
+			console.log("ERROR GETTING FOLLOWERS:", err)
+			res.sendStatus(500)
+		})
+}
 
 
 
