@@ -64,14 +64,29 @@ const getTimeline = (req, res) => {
 }
 
 // UPDATE A SPECIFIC POST
-const updatePost = () => {
-		Post.findById({
-			id: req.params.id			
+const updatePost = (req, res) => {
+	Post.update(
+
+		{
+			title: req.body.title,
+			post_body:req.body.post_body
+		},
+
+		{ 
+			where: {
+			 id: req.params.id
+		}
+
+	    })
+		   .then(function(){
+		   	res.send(200)
 		})
-		.then((post) => {
-			console.log('Post: ', post)
+		   
+		   .catch((error)=>{
+			res.sendStatus(500);
 		})
-}
+
+};
 
 // SEE WHO YOU'RE FOLLOWING
 const seeFollowing = () => {
