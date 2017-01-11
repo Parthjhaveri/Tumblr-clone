@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        User.belongsToMany(User, { as: 'Follows', through: 'Following' });
+        User.belongsToMany(User, { as: 'Following', through: 'Following_Trackers' });
         User.hasMany(models.Post);
         User.belongsToMany(models.Post, {through: 'Notes'})
       }
@@ -46,24 +46,3 @@ module.exports = function(sequelize, DataTypes) {
 }
 
 
-function getNotesForOnePost(req, res) {
-  Post.findById(req.params.postId)
-  .then(function(post) {
-    post.getUsers()
-  })
-  .then(function(users) {
-    console.log(users);
-    res.send(users);
-  })
-}
-
-// function getNotesForOnePost(req, res) {
-//   Post.findById(req.params.postId)
-//   .then(function(post) {
-//     return post.getUsers()
-//   })
-//   .then((users) => {
-//     console.log({count: users.length})
-//     res.send({count: users.length})
-//   })
-// }

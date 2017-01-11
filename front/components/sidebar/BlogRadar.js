@@ -5,9 +5,9 @@ const BlogRadar = React.createClass({
 	render() {
 		return(
 			<div>
-				<h1>
-					Blog Radar Component
-				</h1>
+				<h3>
+					Blog Radar
+				</h3>
 			</div>
 		)
 	}

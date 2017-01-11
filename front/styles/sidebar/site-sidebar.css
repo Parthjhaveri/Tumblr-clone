@@ -10,15 +10,25 @@ FRONT > COMPONENTS > SIDEBAR > BlogRadar.js */
 }
 
 .sidebar-recommend-blogs-container {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	width: 100%;
 	background: springgreen;
 	padding: 5px 5px;
 }
 
 .sidebar-blogradar-container {
+	display: flex;
 	background: turquoise;
 	padding: 5px 5px;
 }
 
 /* RecommendBlogs.js */
+.recommend-blogs-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
 
 /* BlogRadar */
