@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../../models').Post;
+const User = require('../../models').User;
 
 
 
@@ -36,15 +37,49 @@ const getUserPosts = (req, res) => {
 	})
 }
 
+// Add Note
+const addNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.addUser([req.params.userId])
+	})
+	.then(()=> {
+		res.send('New note has been added.')
+	})
+}
 
+const removeNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.removeUser(req.params.userId)
+	})
+	.then(() => {
+		res.send('Note has been removed.')
+	})
+}
 
-
-
+function getNotesForOnePost(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers()
+	})
+	.then(function(users) {
+		console.log(users);
+		res.send(users);
+	})
+}
 /////////////////////
 //////ROUTE//////////
 /////////////////////
 router.route('/')
 	.get(getPost)
+
+router.route('/:postId/:userId')
+	.post(addNote)
+	.delete(removeNote)
+
+router.route('/:postId')
+	.get(getNotesForOnePost)
 
 
 /////////////////////
