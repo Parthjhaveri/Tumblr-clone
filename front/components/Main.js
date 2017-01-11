@@ -9,11 +9,6 @@ const Main = React.createClass({
 	render() {
 		return(
 			<div>
-				<h1>
-					<Link to='/'>
-						Tumblr Clone
-					</Link>
-				</h1>
 				<SiteNavigation />
 				<CreatePost />
 				{React.cloneElement(this.props.children, this.props)}
