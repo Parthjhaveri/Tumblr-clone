@@ -10,6 +10,8 @@ const Timeline = React.createClass({
 					
 					<div className="timeline-post-container">
 						<IndividualPost />
+						<IndividualPost />
+						<IndividualPost />
 					</div>
 
 				</div>

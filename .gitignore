@@ -8,5 +8,4 @@ node_modules
 
 bundle.js
 bundle.js.map
-
-config/config.json
+front/public/bundle.js
