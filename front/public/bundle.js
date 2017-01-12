@@ -60,19 +60,17 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Home = __webpack_require__(291);
+	var _Home = __webpack_require__(287);
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _store = __webpack_require__(279);
+	var _store = __webpack_require__(281);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _CreatePost = __webpack_require__(277);
+	var _CreatePostContainer = __webpack_require__(299);
 	
-	var _CreatePost2 = _interopRequireDefault(_CreatePost);
-	
-	var _LoginContainer = __webpack_require__(303);
+	var _LoginContainer = __webpack_require__(301);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -87,7 +85,7 @@
 	      _reactRouter.Route,
 	      { path: '/', component: _Main2.default },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'create', component: _CreatePost2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'create', component: _CreatePostContainer.CreatePostContainer }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginContainer.LoginContainer })
 	    )
 	  )
@@ -28553,18 +28551,13 @@
 	
 	__webpack_require__(275);
 	
-	var _CreatePost = __webpack_require__(277);
-	
-	var _CreatePost2 = _interopRequireDefault(_CreatePost);
-	
-	var _Login = __webpack_require__(286);
+	var _Login = __webpack_require__(277);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//Build Component
-	//Import REACT Modules
 	var Main = _react2.default.createClass({
 		displayName: 'Main',
 		render: function render() {
@@ -28578,6 +28571,7 @@
 	});
 	
 	//Export Component
+	//Import REACT Modules
 	exports.default = Main;
 
 /***/ },
@@ -29053,269 +29047,6 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _actionTest = __webpack_require__(278);
-	
-	__webpack_require__(284);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var CreatePost = _react2.default.createClass({
-		displayName: 'CreatePost',
-		componentDidMount: function componentDidMount() {
-			console.log('Mount: ' + this.props.color);
-		},
-		handleSubmit: function handleSubmit(event) {
-			var that = this;
-			event.preventDefault();
-			(0, _actionTest.actionTest)('blue');
-			setTimeout(function () {
-				console.log('Handle submit: ' + that.props.color);
-			}, 2000);
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'div',
-					{ className: 'create-post-container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'create-post-input-container' },
-						_react2.default.createElement(
-							'h1',
-							null,
-							'CREATE POST'
-						)
-					)
-				)
-			);
-		}
-	});
-	
-	exports.default = CreatePost;
-
-/***/ },
-/* 278 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.actionTest = actionTest;
-	
-	var _store = __webpack_require__(279);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function actionTest(data) {
-	  _store2.default.dispatch({
-	    type: 'ACTION_TEST',
-	    data: data
-	  });
-	}
-
-/***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _redux = __webpack_require__(242);
-	
-	var _rootReducer = __webpack_require__(280);
-	
-	var _rootReducer2 = _interopRequireDefault(_rootReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var store = (0, _redux.createStore)(_rootReducer2.default);
-	
-	exports.default = store;
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _redux = __webpack_require__(242);
-	
-	var _store = __webpack_require__(279);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _createPostReducer = __webpack_require__(281);
-	
-	var _createPostReducer2 = _interopRequireDefault(_createPostReducer);
-	
-	var _loginFormReducer = __webpack_require__(283);
-	
-	var _loginFormReducer2 = _interopRequireDefault(_loginFormReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var rootReducer = (0, _redux.combineReducers)({
-	  createPostReducer: _createPostReducer2.default,
-	  loginFormReducer: _loginFormReducer2.default
-	});
-	
-	exports.default = rootReducer;
-
-/***/ },
-/* 281 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _actionTypes = __webpack_require__(282);
-	
-	// state
-	var _initialState = {
-	  title: "",
-	  postText: "",
-	  tags: [],
-	  color: 'green'
-	}; // actions types
-	
-	
-	function createPostReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState;
-	  var action = arguments[1];
-	
-	  var stateCopy = Object.assign({}, state);
-	  switch (action.type) {
-	    case "ACTION_TEST":
-	      stateCopy.color = action.data;
-	      return stateCopy;
-	    default:
-	      return stateCopy;
-	  }
-	}
-	
-	exports.default = createPostReducer;
-
-/***/ },
-/* 282 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var CREATE_POST = exports.CREATE_POST = "CREATE_POST";
-	
-	var LOGIN_WITH_USERNAME = exports.LOGIN_WITH_USERNAME = "LOGIN_WITH_USERNAME";
-	
-	var SET_USER_INFO = exports.SET_USER_INFO = "SET_USER_INFO";
-
-/***/ },
-/* 283 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _actionTypes = __webpack_require__(282);
-	
-	var _init = {
-	  login: null,
-	  currentUser: null
-	};
-	
-	function loginFormReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _init;
-	  var action = arguments[1];
-	
-	  var stateCopy = Object.assign({}, state);
-	  switch (action.type) {
-	    case _actionTypes.LOGIN_WITH_USERNAME:
-	      stateCopy[action.name] = action.value;
-	      return stateCopy;
-	    case _actionTypes.SET_USER_INFO:
-	      stateCopy.currentUser = action.user;
-	      return stateCopy;
-	    default:
-	      return stateCopy;
-	  }
-	};
-	
-	exports.default = loginFormReducer;
-
-/***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(285);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(274)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 285 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(273)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".create-post-container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  background-color: red;\n  margin-top: 55px;\n  margin-bottom: -55px; }\n\n.create-post-input-container {\n  width: 500px;\n  height: 500px;\n  background-color: white;\n  border-radius: 3px; }\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
@@ -29323,11 +29054,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(287);
+	__webpack_require__(278);
 	
-	var _formActions = __webpack_require__(289);
+	var _formActions = __webpack_require__(280);
 	
-	var _jquery = __webpack_require__(290);
+	var _jquery = __webpack_require__(286);
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
@@ -29374,13 +29105,13 @@
 	exports.default = Login;
 
 /***/ },
-/* 287 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(288);
+	var content = __webpack_require__(279);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -29400,7 +29131,7 @@
 	}
 
 /***/ },
-/* 288 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -29414,7 +29145,7 @@
 
 
 /***/ },
-/* 289 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29424,12 +29155,13 @@
 	});
 	exports.loginWithUsername = loginWithUsername;
 	exports.setUserInfo = setUserInfo;
+	exports.createNewPost = createNewPost;
 	
-	var _store = __webpack_require__(279);
+	var _store = __webpack_require__(281);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _actionTypes = __webpack_require__(282);
+	var _actionTypes = __webpack_require__(284);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -29447,9 +29179,163 @@
 	    user: user
 	  });
 	}
+	
+	function createNewPost(name, value) {
+	  _store2.default.dispatch({
+	    type: _actionTypes.CREATE_POST,
+	    name: name,
+	    value: value
+	  });
+	}
 
 /***/ },
-/* 290 */
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _redux = __webpack_require__(242);
+	
+	var _rootReducer = __webpack_require__(282);
+	
+	var _rootReducer2 = _interopRequireDefault(_rootReducer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var store = (0, _redux.createStore)(_rootReducer2.default);
+	
+	exports.default = store;
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _redux = __webpack_require__(242);
+	
+	var _store = __webpack_require__(281);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _createPostReducer = __webpack_require__(283);
+	
+	var _createPostReducer2 = _interopRequireDefault(_createPostReducer);
+	
+	var _loginFormReducer = __webpack_require__(285);
+	
+	var _loginFormReducer2 = _interopRequireDefault(_loginFormReducer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var rootReducer = (0, _redux.combineReducers)({
+	  createPostReducer: _createPostReducer2.default,
+	  loginFormReducer: _loginFormReducer2.default
+	});
+	
+	exports.default = rootReducer;
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _actionTypes = __webpack_require__(284);
+	
+	// state
+	var _initialState = {
+	  title: "",
+	  text: "",
+	  tags: "",
+	  color: 'green'
+	}; // actions types
+	
+	
+	function createPostReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState;
+	  var action = arguments[1];
+	
+	  var stateCopy = Object.assign({}, state);
+	  switch (action.type) {
+	    case "ACTION_TEST":
+	      stateCopy.color = action.data;
+	      return stateCopy;
+	    case _actionTypes.CREATE_POST:
+	      stateCopy[action.name] = action.value;
+	      return stateCopy;
+	    default:
+	      return stateCopy;
+	  }
+	}
+	
+	exports.default = createPostReducer;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var CREATE_POST = exports.CREATE_POST = "CREATE_POST";
+	
+	var LOGIN_WITH_USERNAME = exports.LOGIN_WITH_USERNAME = "LOGIN_WITH_USERNAME";
+	
+	var SET_USER_INFO = exports.SET_USER_INFO = "SET_USER_INFO";
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _actionTypes = __webpack_require__(284);
+	
+	var _init = {
+	  login: null,
+	  currentUser: null
+	};
+	
+	function loginFormReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _init;
+	  var action = arguments[1];
+	
+	  var stateCopy = Object.assign({}, state);
+	  switch (action.type) {
+	    case _actionTypes.LOGIN_WITH_USERNAME:
+	      stateCopy[action.name] = action.value;
+	      return stateCopy;
+	    case _actionTypes.SET_USER_INFO:
+	      stateCopy.currentUser = action.user;
+	      return stateCopy;
+	    default:
+	      return stateCopy;
+	  }
+	};
+	
+	exports.default = loginFormReducer;
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -39675,7 +39561,7 @@
 
 
 /***/ },
-/* 291 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39688,15 +39574,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Timeline = __webpack_require__(292);
+	var _Timeline = __webpack_require__(288);
 	
 	var _Timeline2 = _interopRequireDefault(_Timeline);
 	
-	var _Sidebar = __webpack_require__(298);
+	var _Sidebar = __webpack_require__(294);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
-	__webpack_require__(301);
+	__webpack_require__(297);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39727,7 +39613,7 @@
 	exports.default = Home;
 
 /***/ },
-/* 292 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39740,11 +39626,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _IndividualPost = __webpack_require__(293);
+	var _IndividualPost = __webpack_require__(289);
 	
 	var _IndividualPost2 = _interopRequireDefault(_IndividualPost);
 	
-	__webpack_require__(294);
+	__webpack_require__(290);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39774,7 +39660,7 @@
 	exports.default = Timeline;
 
 /***/ },
-/* 293 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39787,13 +39673,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(294);
+	__webpack_require__(290);
 	
-	var _IndividualPostHeader = __webpack_require__(296);
+	var _IndividualPostHeader = __webpack_require__(292);
 	
 	var _IndividualPostHeader2 = _interopRequireDefault(_IndividualPostHeader);
 	
-	var _IndividualPostFooter = __webpack_require__(297);
+	var _IndividualPostFooter = __webpack_require__(293);
 	
 	var _IndividualPostFooter2 = _interopRequireDefault(_IndividualPostFooter);
 	
@@ -39844,13 +39730,13 @@
 	exports.default = IndividualPost;
 
 /***/ },
-/* 294 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(295);
+	var content = __webpack_require__(291);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -39870,7 +39756,7 @@
 	}
 
 /***/ },
-/* 295 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -39884,7 +39770,7 @@
 
 
 /***/ },
-/* 296 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39940,7 +39826,7 @@
 	exports.default = IndividualPostHeader;
 
 /***/ },
-/* 297 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39983,7 +39869,7 @@
 	exports.default = IndividualPostFooter;
 
 /***/ },
-/* 298 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39996,7 +39882,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(299);
+	__webpack_require__(295);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -40020,13 +39906,13 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 299 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(300);
+	var content = __webpack_require__(296);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -40046,7 +39932,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -40060,13 +39946,13 @@
 
 
 /***/ },
-/* 301 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(302);
+	var content = __webpack_require__(298);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -40086,7 +39972,7 @@
 	}
 
 /***/ },
-/* 302 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -40100,7 +39986,152 @@
 
 
 /***/ },
-/* 303 */
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.CreatePostContainer = undefined;
+	
+	var _reactRedux = __webpack_require__(233);
+	
+	var _CreatePost = __webpack_require__(300);
+	
+	var _CreatePost2 = _interopRequireDefault(_CreatePost);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    title: state.createPostReducer.title,
+	    text: state.createPostReducer.text,
+	    tags: state.createPostReducer.tags,
+	    username: state.loginFormReducer.currentUser ? state.loginFormReducer.currentUser[0].username : state.loginFormReducer.currentUser,
+	    color: state.createPostReducer.color
+	  };
+	};
+	
+	var CreatePostContainer = exports.CreatePostContainer = (0, _reactRedux.connect)(mapStateToProps)(_CreatePost2.default);
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _jquery = __webpack_require__(286);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _actionTest = __webpack_require__(302);
+	
+	var _formActions = __webpack_require__(280);
+	
+	__webpack_require__(303);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CreatePost = _react2.default.createClass({
+		displayName: 'CreatePost',
+		componentDidMount: function componentDidMount() {
+			console.log('Mount: ' + this.props.color);
+		},
+		handleSubmit: function handleSubmit(event) {
+			event.preventDefault();
+			_jquery2.default.ajax({
+				url: '/api/post/',
+				type: 'POST',
+				data: {
+					title: this.props.title,
+					content: this.props.text,
+					username: this.props.username,
+					tags: this.props.tags
+				}
+			}).done(console.log('Done'));
+		},
+		handleChange: function handleChange(event) {
+			console.log(event.target.value);
+			var name = event.target.name;
+			var value = event.target.value;
+			(0, _formActions.createNewPost)(name, value);
+		},
+		render: function render() {
+			console.log('TITLE:', this.props.title);
+			console.log('TEXT:', this.props.text);
+			console.log('TAGS:', this.props.username);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'create-post-container' },
+					_react2.default.createElement(
+						'form',
+						{ onSubmit: this.handleSubmit },
+						_react2.default.createElement(
+							'div',
+							{ className: 'create-post-input-container' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'create-post-input-header' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'create-post-input-header-userid' },
+									'ItsMelBaby1969'
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'create-post-input-header-settings' },
+									'SETTINGS'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'create-post-input-title' },
+								_react2.default.createElement('input', { type: 'text', name: 'title', placeholder: 'Title', onChange: this.handleChange })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'create-post-input-text' },
+								_react2.default.createElement('textarea', { type: 'text', name: 'text', placeholder: 'Your text here', rows: '6', cols: '50', onChange: this.handleChange })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'create-post-input-tags' },
+								_react2.default.createElement('input', { type: 'text', name: 'tags', placeholder: '#tags', onChange: this.handleChange })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'create-post-input-footer' },
+								_react2.default.createElement('div', { className: 'create-post-input-footer-close' }),
+								_react2.default.createElement(
+									'div',
+									{ className: 'create-post-input-footer-post' },
+									_react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'Post' })
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+	
+	exports.default = CreatePost;
+
+/***/ },
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40112,7 +40143,7 @@
 	
 	var _reactRedux = __webpack_require__(233);
 	
-	var _Login = __webpack_require__(286);
+	var _Login = __webpack_require__(277);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
@@ -40126,6 +40157,70 @@
 	};
 	
 	var LoginContainer = exports.LoginContainer = (0, _reactRedux.connect)(mapStateToProps)(_Login2.default);
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.actionTest = actionTest;
+	
+	var _store = __webpack_require__(281);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function actionTest(data) {
+	  _store2.default.dispatch({
+	    type: 'ACTION_TEST',
+	    data: data
+	  });
+	}
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(304);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(274)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(273)();
+	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Arimo);", ""]);
+	
+	// module
+	exports.push([module.id, "* {\n  color: #aaaaaa;\n  font-family: \"Arimo\";\n  font-size: 12px; }\n\ntextarea:focus, input:focus {\n  outline: none; }\n\n.create-post-container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin-top: 55px; }\n\n.create-post-input-container {\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  height: 300px;\n  background-color: white;\n  border-radius: 4px;\n  margin-top: 30px; }\n\n.create-post-input-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-header-userid {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px;\n  font-weight: bold;\n  color: #666666; }\n\n.create-post-input-header-settings {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n\n.create-post-input-title {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-title input {\n  height: 40px;\n  font-size: 32px;\n  border: none;\n  color: #333333; }\n\n.create-post-input-text {\n  display: flex;\n  width: 100%;\n  padding-left: 20px; }\n\n.create-post-input-text textarea {\n  font-size: 15px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-tags {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-tags input {\n  font-size: 13px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-footer {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center; }\n\n.create-post-input-footer-close {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px; }\n\n.create-post-input-footer-post {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n", ""]);
+	
+	// exports
+
 
 /***/ }
 /******/ ]);

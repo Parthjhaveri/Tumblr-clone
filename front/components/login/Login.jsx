@@ -13,7 +13,7 @@ const Login = React.createClass({
       type: 'GET'
     })
     .done(function(user) {
-      console.log('USER DATA FROM DB',user);
+      console.log('USER DATA FROM DB', user);
       setUserInfo(user);
     })
   },

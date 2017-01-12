@@ -3,8 +3,9 @@ import CreatePost from 'CreatePost';
 
 const mapStateToProps = state => ({
   title: state.createPostReducer.title,
-  postText: state.createPostReducer.postText,
+  text: state.createPostReducer.text,
   tags: state.createPostReducer.tags,
+  username: state.loginFormReducer.currentUser ? state.loginFormReducer.currentUser[0].username : state.loginFormReducer.currentUser,
   color: state.createPostReducer.color
 });
 

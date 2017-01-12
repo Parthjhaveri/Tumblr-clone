@@ -193,6 +193,7 @@ function getNoteForOnePostByOneUser(req, res) {
 /////////////////////
 router.route('/')
 	.get(getPost)
+	.post(makePost)
 
 router.route('/:postId/:userId')
 	.post(addNote)
@@ -201,7 +202,6 @@ router.route('/:postId/:userId')
 
 router.route('/:postId')
 	.get(getNotesForOnePost)
-	.post(makePost)
 
 	// router.route('/tag')
 	// .post(makeTag)

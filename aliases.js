@@ -11,7 +11,7 @@ module.exports = {
   loginFormReducer: 'front/reducers/loginFormReducer',
 // COMPONENTS:
   Main: 'front/components/Main',
-  CreatePost: 'front/components/create-post/Create-Post',
+  CreatePost: 'front/components/create-post/CreatePost',
   Login: 'front/components/login/Login',
   Timeline: 'front/components/timeline/Timeline',
 // CONTAINERS:
