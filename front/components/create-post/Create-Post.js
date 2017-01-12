@@ -7,9 +7,11 @@ const CreatePost = React.createClass({
 				<br />
 				<input type="text" placeholder="TITLE"></input>
 				<br />
+				<input type="text" placeholder="USERNAME"></input>
+				<br />
 				<input type="text" placeholder="POST TEXT"></input>
 				<br />
-				<input type="text" placeholder="TAGS"></input>
+				<input type="text" placeholder="TAGS (separate with ',')"></input>
 				<br />
 				<button type="submit">POST</button>
 				<br />
