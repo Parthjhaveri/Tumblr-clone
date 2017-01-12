@@ -4,8 +4,6 @@ const Post = require('../../models').Post;
 const Tags = require('../../models').Tag;
 const User = require('../../models').User;
 
-
-
 /////////////////////
 ////FUNCTION/////////
 /////////////////////
@@ -84,18 +82,63 @@ const getUserPosts = (req, res) => {
 
 // GENERATE TIMELINE
 // SO WE WANT THE MOST RECENT POST BY EVERY USER (DESCENDING DATE AND TIME)
-// const getTimeline = (req, res) => {
-// 	Post.get('/api/feed/:userId')
-// 		.then(data => {
-// 			console.log('Data:', data)
-// 			response.send(data)
-// 		})
+const getTimeline = (req, res) => {
+		
+		// Post.get('/api/feed/:userId')
+		// .then(data => {
+		// 	console.log('Data:', data)
+		// 	response.send(data)
+		// })
+		// // SORT THEM IN REVERSE
+		// .then((posts) => {
+		// 	posts.sort(function(a,b) {
+		// 		return (b - a);
+		// 	})
+		// })
 
-// }
+		Post.findAll({ limit: 20, order: '"updatedAt" DESC' })
+		.catch( (err) => {
+			console.log("ERROR GETTING TIMELINE:", err)
+			res.sendStatus(500)
+		})
+}
 
-// songRouter.get('/',(req,res)=>{
-//     Song.findAll({include:[Artist,Genre]}).then((song)=> {res.send(song)});
-// })
+// UPDATE A SPECIFIC POST
+const updatePost = (req, res) => {
+	Post.update(
+
+		{
+			title: req.body.title,
+			post_body:req.body.post_body
+		},
+
+		{ 
+			where: {
+			 id: req.params.id
+		}
+
+	    })
+		   .then(function(){
+		   	res.send(200)
+		})
+		   
+		   .catch((error)=>{
+			res.sendStatus(500);
+		})
+
+};
+
+// SEE WHO YOU'RE FOLLOWING
+const seeFollowing = () => {
+		User.findById(req.params.userId)
+		.then((user) => {
+			return user.seeFollowing()
+		})
+		.catch( (err) => {
+			console.log("ERROR GETTING FOLLOWERS:", err)
+			res.sendStatus(500)
+		})
+}
 
 
 
