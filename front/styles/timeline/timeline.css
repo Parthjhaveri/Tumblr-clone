@@ -99,10 +99,11 @@ FRONT > COMPONENTS > TIMELINE> IndividualPost.js */
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	align-content: center;
 	align-items: center;
 	height: 25px;
-	padding: 5px 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 20px;
 	width: 20%;
 }
 
@@ -113,7 +114,7 @@ FRONT > COMPONENTS > TIMELINE> IndividualPost.js */
 	flex-direction: row;
 	width: 100%;
 	justify-content: center;
-	align-content: center;
+	align-items: center;
 }
 
 .footer-left {
@@ -121,7 +122,7 @@ FRONT > COMPONENTS > TIMELINE> IndividualPost.js */
 	flex-direction: row;
 	width: 50%;
 	justify-content: flex-start;
-	align-content: center;
+	align-items: center;
 	padding-left: 20px;
 	font-family: "Arimo";
 	font-weight: bold;

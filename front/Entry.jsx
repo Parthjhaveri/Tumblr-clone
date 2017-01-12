@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import Main from 'Main';
 import Home from './components/home/Home.js';
 import store from 'store';
-import {CreatePostContainer} from 'CreatePostContainer';
+import CreatePost from './components/create-post/CreatePost.js';
 
 //Build Router Component
 const router = (
@@ -20,7 +20,7 @@ const router = (
   	<Router history={ browserHistory }>
   		<Route path="/" component={Main}>
   			<IndexRoute component={Home} />
-        <Route path="createpost" component={CreatePostContainer}/>
+        <Route path="create" component={CreatePost} />
   		</Route>
   	</Router>
   </Provider>

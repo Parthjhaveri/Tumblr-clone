@@ -14,13 +14,11 @@ FRONT > COMPONENTS > SIDEBAR > BlogRadar.js */
 	flex-direction: row;
 	flex-grow: 1;
 	width: 100%;
-	background: springgreen;
 	padding: 5px 5px;
 }
 
 .sidebar-blogradar-container {
 	display: flex;
-	background: turquoise;
 	padding: 5px 5px;
 }
 
