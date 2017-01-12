@@ -143,7 +143,7 @@ function getNotesForOnePost(req, res) {
 		return post.getUsers()
 	})
 	.then(function(users) {
-		console.log(users);
+		// console.log(users);
 		res.send(users);
 	})
 }
