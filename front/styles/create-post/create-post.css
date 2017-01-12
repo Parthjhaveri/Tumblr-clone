@@ -1,0 +1,18 @@
+.create-post-container {
+	width: 100vw;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: red;
+	margin-top: 55px;
+	margin-bottom: -55px;
+}
+
+.create-post-input-container {
+	width: 500px;
+	height: 500px;
+	background-color: white;
+	border-radius: 3px;
+}

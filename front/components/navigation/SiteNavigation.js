@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import '../../styles/navigation/site-navigation.css';
 
 const SiteNavigation = React.createClass({
@@ -15,15 +16,19 @@ const SiteNavigation = React.createClass({
 						</div>
 					</div>
 					<div className="navigation-right">
-						<div className="navigation-button-timeline">
-							<img src="https://s25.postimg.org/gt1qdb8in/tumblr_home.png" alt="Timeline" />
-						</div>
+						<Link to="/">
+							<div className="navigation-button-timeline">
+								<img src="https://s25.postimg.org/gt1qdb8in/tumblr_home.png" alt="Timeline" />
+							</div>
+						</Link>
 						<div className="navigation-button-user-profile">
 							<img src="https://s25.postimg.org/8xr6yhyvz/tumblr_user.png" alt="User Profile" />
 						</div>
-						<div className="navigation-button-create-post">
-							<img src="https://s25.postimg.org/j59qawl3z/tumblr_create.png" alt="Create Post" />
-						</div>
+						<Link to="/create">
+							<div className="navigation-button-create-post">
+								<img src="https://s25.postimg.org/j59qawl3z/tumblr_create.png" alt="Create Post" />
+							</div>
+						</Link>
 					</div>
 					</div>
 					<div className="navigation-divider">

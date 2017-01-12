@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import SiteNavigation from './navigation/SiteNavigation.js';
 import '../styles/main/main.css';
+import CreatePost from './create-post/CreatePost.js';
 
 //Build Component
 const Main = React.createClass({
@@ -10,11 +11,7 @@ const Main = React.createClass({
 		return(
 			<div>
 				<SiteNavigation />
-
-				{React.cloneElement(this.props.children, this.props)}
-
-				{this.props.CreatePostContainer}
-				{React.cloneElement(this.props.children, this.props, this.props.Home)}
+					{React.cloneElement(this.props.children, this.props, this.props.Home)}
 			</div>
 		)
 	}

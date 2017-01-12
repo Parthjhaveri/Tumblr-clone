@@ -1,6 +1,6 @@
 import React from 'react';
-import RecommendBlogs from './RecommendBlogs';
-import BlogRadar from './BlogRadar';
+// import RecommendBlogs from './RecommendBlogs';
+// import BlogRadar from './BlogRadar';
 import '../../styles/sidebar/site-sidebar.css';
 
 const Sidebar = React.createClass({
@@ -9,10 +9,10 @@ const Sidebar = React.createClass({
 			<div>
 				<div className="sidebar-container">
 					<div className="sidebar-recommend-blogs-container">
-						<RecommendBlogs />
+					
 					</div>
 					<div className="sidebar-blogradar-container">
-						<BlogRadar />
+				
 					</div>
 				</div>
 			</div>
