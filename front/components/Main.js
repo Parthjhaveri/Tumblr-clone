@@ -10,7 +10,12 @@ const Main = React.createClass({
 		return(
 			<div>
 				<SiteNavigation />
+<<<<<<< HEAD
 				{React.cloneElement(this.props.children, this.props)}
+=======
+				{this.props.CreatePostContainer}
+				{React.cloneElement(this.props.children, this.props, this.props.Home)}
+>>>>>>> 2f802f6f6f2f05065eca5f950a7d4881b083131a
 			</div>
 		)
 	}
