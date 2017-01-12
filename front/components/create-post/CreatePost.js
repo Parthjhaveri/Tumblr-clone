@@ -22,9 +22,31 @@ const CreatePost = React.createClass({
 			<div>
 				<div className="create-post-container">
 					<div className="create-post-input-container">
-						<h1>
-							CREATE POST
-						</h1>
+						<div className="create-post-input-header">
+							<div className="create-post-input-header-userid">
+								ItsMelBaby1969
+							</div>
+							<div className="create-post-input-header-settings">
+								SETTINGS
+							</div>
+						</div>
+						<div className="create-post-input-title">
+							<input type="text" name="title" placeholder="Title"></input>
+						</div>
+						<div className="create-post-input-text">
+							<textarea type="text" name="text" placeholder="Your text here" rows="6" cols="50"></textarea>
+						</div>		
+						<div className="create-post-input-tags">
+							<input type="text" name="tags" placeholder="#tags"></input>
+						</div>
+						<div className="create-post-input-footer">
+							<div className="create-post-input-footer-close">
+								
+							</div>
+							<div className="create-post-input-footer-post">
+								<button>POST</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
