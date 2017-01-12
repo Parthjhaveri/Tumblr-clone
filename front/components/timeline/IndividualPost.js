@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../styles/timeline/timeline.css';
 import IndividualPostHeader from './IndividualPostHeader';
+import IndividualPostFooter from './IndividualPostFooter';
 
 const IndividualPost = React.createClass({
 	render() {
@@ -20,7 +21,7 @@ const IndividualPost = React.createClass({
 							<img src="https://derpicdn.net/img/view/2013/5/9/320959__solo_pinkie+pie_animated_questionable_solo+female_plot_upvotes+galore_dance_artist-colon-lizombie_twerking.gif" alt="Twerk Pony" /> 
 						</div>
 						<div className="post-right-footer">
-							POST FOOTER 
+							<IndividualPostFooter />
 						</div>
 					</div>
 				</div>

@@ -107,4 +107,33 @@ FRONT > COMPONENTS > TIMELINE> IndividualPost.js */
 }
 
 
+/* INDIVIDUALPOSTFOOTER.js */
+.footer-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: center;
+	align-content: center;
+}
 
+.footer-left {
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	justify-content: flex-start;
+	align-content: center;
+	padding-left: 20px;
+	font-family: "Arimo";
+	font-weight: bold;
+	color: #999999;
+	font-size: 13px;
+}
+
+.footer-right {
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	justify-content: flex-end;
+	align-content: center;
+	padding-right: 20px;
+}
