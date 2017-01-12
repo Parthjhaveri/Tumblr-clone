@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import SiteNavigation from './navigation/SiteNavigation.js';
 import '../styles/main/main.css';
 import CreatePost from './create-post/CreatePost.js';
+import Login from 'Login';
 
 //Build Component
 const Main = React.createClass({

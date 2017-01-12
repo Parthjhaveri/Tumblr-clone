@@ -4,6 +4,7 @@ const Post = require('../../models').Post;
 const Tags = require('../../models').Tag;
 const User = require('../../models').User;
 
+
 /////////////////////
 ////FUNCTION/////////
 /////////////////////
@@ -80,6 +81,27 @@ const getUserPosts = (req, res) => {
 	})
 }
 
+// Add Note
+const addNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.addUser([req.params.userId])
+	})
+	.then(()=> {
+		res.send('New note has been added.')
+	})
+}
+
+const removeNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.removeUser(req.params.userId)
+	})
+	.then(() => {
+		res.send('Note has been removed.')
+	})
+}
+
 // GENERATE TIMELINE
 // SO WE WANT THE MOST RECENT POST BY EVERY USER (DESCENDING DATE AND TIME)
 const getTimeline = (req, res) => {
@@ -140,17 +162,50 @@ const seeFollowing = () => {
 		})
 }
 
+function getNotesForOnePost(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers()
+	})
+	.then(function(users) {
+		// console.log(users);
+		res.send(users);
+	})
+}
 
+function getNoteForOnePostByOneUser(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers({
+			where: {
+				id: req.params.userId
+			}
+		})
+	})
+	.then(function(users) {
+		// console.log(users);
+		res.send(users);
+	})
+}
 
 /////////////////////
 //////ROUTE//////////
 /////////////////////
 router.route('/')
 	.get(getPost)
+
+router.route('/:postId/:userId')
+	.post(addNote)
+	.delete(removeNote)
+	.get(getNoteForOnePostByOneUser)
+
+router.route('/:postId')
+	.get(getNotesForOnePost)
 	.post(makePost)
 
 	// router.route('/tag')
 	// .post(makeTag)
+
 
 /////////////////////
 /////EXPORTS////////

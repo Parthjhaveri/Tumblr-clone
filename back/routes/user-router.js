@@ -48,6 +48,7 @@ const getUser = ((request,response) => {
 })
 
 //follow someone by username
+// username is the person you want to follow, userId is the person adding a follower 
 const followSomeone = ((request,response) => {
   User.findAll({
       where: {username: request.params.username}
