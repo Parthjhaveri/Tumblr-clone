@@ -147,6 +147,22 @@ function getNotesForOnePost(req, res) {
 		res.send(users);
 	})
 }
+
+function getNoteForOnePostByOneUser(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers({
+			where: {
+				id: req.params.userId
+			}
+		})
+	})
+	.then(function(users) {
+		// console.log(users);
+		res.send(users);
+	})
+}
+
 /////////////////////
 //////ROUTE//////////
 /////////////////////
@@ -156,10 +172,13 @@ router.route('/')
 router.route('/:postId/:userId')
 	.post(addNote)
 	.delete(removeNote)
+	.get(getNoteForOnePostByOneUser)
 
 router.route('/:postId')
 	.get(getNotesForOnePost)
 	.post(makePost)
+
+
 
 
 /////////////////////
