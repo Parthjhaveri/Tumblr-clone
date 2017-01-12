@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "victor",
+    "username": "parthjhaveri",
     "password": null,
-    "database": "tumblr-clone",
+    "database": "tumblr",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
