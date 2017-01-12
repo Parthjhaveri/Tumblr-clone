@@ -13,6 +13,7 @@ import Main from 'Main';
 import Home from './components/home/Home.js';
 import store from 'store';
 import CreatePost from './components/create-post/CreatePost.js';
+import {LoginContainer} from 'LoginContainer';
 
 //Build Router Component
 const router = (
@@ -21,6 +22,7 @@ const router = (
   		<Route path="/" component={Main}>
   			<IndexRoute component={Home} />
         <Route path="create" component={CreatePost} />
+        <Route path="login" component={LoginContainer} />
   		</Route>
   	</Router>
   </Provider>

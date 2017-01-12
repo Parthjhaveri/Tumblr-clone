@@ -1,1 +1,5 @@
 export const CREATE_POST = "CREATE_POST";
+
+export const LOGIN_WITH_USERNAME = "LOGIN_WITH_USERNAME";
+
+export const SET_USER_INFO = "SET_USER_INFO";

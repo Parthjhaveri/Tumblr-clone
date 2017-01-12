@@ -1,6 +1,11 @@
 import React from 'react';
 
 const IndividualPostFooter = React.createClass({
+
+	componentDidMount() {
+
+	},
+
 	render() {
 		return(
 			<div>

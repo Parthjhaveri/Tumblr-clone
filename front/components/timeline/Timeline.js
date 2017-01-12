@@ -3,6 +3,7 @@ import IndividualPost from './IndividualPost';
 import '../../styles/timeline/timeline.css';
 
 const Timeline = React.createClass({
+// on componentDidMount we need to fetch time line with posts from all the users you follow
 	render() {
 		return(
 			<div>
