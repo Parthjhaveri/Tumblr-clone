@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import SiteNavigation from './navigation/SiteNavigation.js';
-import CreatePost from './create-post/Create-Post.js';
+import '../styles/main/main.css';
 
 //Build Component
 const Main = React.createClass({
@@ -10,7 +10,6 @@ const Main = React.createClass({
 		return(
 			<div>
 				<SiteNavigation />
-				<CreatePost />
 				{React.cloneElement(this.props.children, this.props)}
 			</div>
 		)

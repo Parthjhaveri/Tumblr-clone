@@ -1,12 +1,32 @@
 /* FRONT > COMPONENTS > NAVIGATION > Navigation.js*/
+@import url('https://fonts.googleapis.com/css?family=Arimo');
 
 .navigation-container {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: auto;
-	background: palegreen;
-	padding: 10px 10px;
+	height: 45px;
+	padding-top: 10px;
+	top: 0;
+	position: fixed;
+	background-color: #36465D;
+}
+
+.navigation-divider {
+	top: 0;
+	margin-top: 55px;
+	position: fixed;
+	display: flex;
+	flex-grow: 1;
+	background-color: #999999;
+	height: 1px;
+	width: 100%;
+}
+
+.navigation-container img {
+	margin-top: 10px;
+	height: 40px;
+	width: auto;
 }
 
 .navigation-left {
@@ -14,40 +34,55 @@
 	flex-direction: row;
 	width: 50%;
 	height: auto;
-	background: salmon;
-	margin: 5px 5px;
+	margin-top: -10px;
 }
 
 .navigation-right {
 	display: flex;
 	flex-direction: row;
+	justify-content: flex-end;
 	width: 50%;
 	height: auto;
-	background: sandybrown;
-	margin: 5px 5px;
+	margin-top: -10px;
 }
 
 .navigation-tumblr-logo {
-	background: lightpink;
-	margin: 5px 5px;
+
 }
 
 .navigation-search {
-	background: peachpuff;
-	margin: 5px 5px;
+	padding-top: 10px;
+	height: 55px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: auto;
+}
+
+.navigation-search input {
+	background-image: url('https://s25.postimg.org/djc6su8v3/search_icon.png');
+	background-repeat: no-repeat;
+	font-family: Arimo;
+	font-size: 14px;
+	color: #a7acb5;
+	background-color: #2f3d51;
+	border: none;
+	border-radius: 3px;
+	width: 480px;
+	height: 35px
 }
 
 .navigation-button-timeline {
-	background: lightskyblue;
-	margin: 5px 5px;
+	align-items: center;
+	justify-content: center;
 }
 
 .navigation-button-user-profile {
-	background: mediumpurple;
-	margin: 5px 5px;
+	align-items: center;
+	justify-content: center;
 }
 
 .navigation-button-create-post {
-	background: mistyrose;
-	margin: 5px 5px;
+	align-items: center;
+	justify-content: center;
 }
