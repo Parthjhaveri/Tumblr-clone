@@ -1,5 +1,6 @@
 import React from 'react';
 import {actionTest} from 'actionTest';
+import '../../styles/create-post/create-post.css';
 
 const CreatePost = React.createClass({
 
@@ -19,21 +20,16 @@ const CreatePost = React.createClass({
 	render() {
 		return(
 			<div>
-				<div>{this.props.color}</div>
-				<form onSubmit={this.handleSubmit}>
-					<br />
-					<input type="text" name="title" placeholder="TITLE"/>
-					<br />
-					<input type="text" name="postText" placeholder="POST TEXT"/>
-					<br />
-					<input type="text" name="tags" placeholder="TAGS"/>
-					<br />
-					<input type="submit" value="submit"/>
-					<br />
-				</form>
+				<div className="create-post-container">
+					<div className="create-post-input-container">
+						<h1>
+							CREATE POST
+						</h1>
+					</div>
+				</div>
 			</div>
 		)
-	}
+	},
 });
 
 export default CreatePost;

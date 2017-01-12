@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../../models').Post;
+const Tags = require('../../models').Tag;
 const User = require('../../models').User;
 
 
@@ -10,18 +11,42 @@ const User = require('../../models').User;
 
 //MAKE NEW POST
 const makePost = ((request,response) => {
-  //console.log(request.body);
-  Post.create({
+	Post.create({
     title:request.body.title,
     content:request.body.content
-  })
-    .then(data => {
-      response.send(data)
+  })	//adding author
+  	.then(newPost => {
+	  		User.findAll({
+		      where: {username: request.body.username}
+		    })
+			    .then(userInfo => {
+			      userInfo[0].setPosts(newPost.id)
+			    })
+			return newPost
+  	})	//adding tags
+    .then(newPost => {
+		    //creating and finding tag-ids
+			var tags = request.body.tags.split(',');
+
+			tags.forEach((val,indx) => {
+				Tags.findOrCreate({
+					where:{title:val}
+				})
+					.then(data => {
+							//tag associations
+						newPost.addTags(data[0].id);
+					})
+			})
+			return newPost
+    })
+    .then(newPost => {
+    	response.send(newPost)
     })
     .catch(error => {
+    	console.log(error)
       response.send(error)
     })
-})
+ })
 
 // GET ONE POST
 const getPost = ((request,response) => {
@@ -178,7 +203,8 @@ router.route('/:postId')
 	.get(getNotesForOnePost)
 	.post(makePost)
 
-
+	// router.route('/tag')
+	// .post(makeTag)
 
 
 /////////////////////

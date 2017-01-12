@@ -4,22 +4,22 @@
 .home-container {
 	display: flex;
 	flex-direction: row;
-	background: olive;
-	padding: 10px 10px;
+	width: 990px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 85px;
 }
 
 .timeline-container {
 	display: flex;
 	flex-direction: column;
-	padding: 5px 5px;
-	width: 70%;
-	background: mediumspringgreen;
+	width: 635px;
+	margin-right: 15px;
 }
 
 .sidebar-container {
 	display: flex;
 	flex-direction: column;
 	padding: 5px 5px;
-	width: 30%;
-	background: mediumturquoise;
+	width: 325px;
 }

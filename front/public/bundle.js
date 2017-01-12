@@ -68,7 +68,9 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _CreatePostContainer = __webpack_require__(293);
+	var _CreatePost = __webpack_require__(296);
+	
+	var _CreatePost2 = _interopRequireDefault(_CreatePost);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -91,7 +93,7 @@
 	      _reactRouter.Route,
 	      { path: '/', component: _Main2.default },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'createpost', component: _CreatePostContainer.CreatePostContainer })
+	      _react2.default.createElement(_reactRouter.Route, { path: 'create', component: _CreatePost2.default })
 	    )
 	  )
 	);
@@ -28546,37 +28548,29 @@
 	
 	var _SiteNavigation2 = _interopRequireDefault(_SiteNavigation);
 	
-	var _CreatePost = __webpack_require__(275);
+	__webpack_require__(294);
+	
+	var _CreatePost = __webpack_require__(296);
 	
 	var _CreatePost2 = _interopRequireDefault(_CreatePost);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//Build Component
-	//Import REACT Modules
 	var Main = _react2.default.createClass({
 		displayName: 'Main',
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(
-					'h1',
-					null,
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/' },
-						'Tumblr Clone'
-					)
-				),
 				_react2.default.createElement(_SiteNavigation2.default, null),
-				this.props.CreatePostContainer,
 				_react2.default.cloneElement(this.props.children, this.props, this.props.Home)
 			);
 		}
 	});
 	
 	//Export Component
+	//Import REACT Modules
 	exports.default = Main;
 
 /***/ },
@@ -28592,6 +28586,8 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(178);
 	
 	__webpack_require__(271);
 	
@@ -28612,34 +28608,43 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'navigation-tumblr-logo' },
-							'TUMBLR LOGO'
+							_react2.default.createElement('img', { src: 'https://s25.postimg.org/tqvcbdm5b/tumblr_logo.png', alt: 'Tumblr' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'navigation-search' },
-							'SEARCH BAR'
+							_react2.default.createElement('input', { type: 'text', placeholder: '         Search Tumblr' })
 						)
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'navigation-right' },
 						_react2.default.createElement(
-							'div',
-							{ className: 'navigation-button-timeline' },
-							'TIMELINE BUTTON'
+							_reactRouter.Link,
+							{ to: '/' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'navigation-button-timeline' },
+								_react2.default.createElement('img', { src: 'https://s25.postimg.org/gt1qdb8in/tumblr_home.png', alt: 'Timeline' })
+							)
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'navigation-button-user-profile' },
-							'USER PROFILE BUTTON'
+							_react2.default.createElement('img', { src: 'https://s25.postimg.org/8xr6yhyvz/tumblr_user.png', alt: 'User Profile' })
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: 'navigation-button-create-post' },
-							'CREATE POST BUTTON'
+							_reactRouter.Link,
+							{ to: '/create' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'navigation-button-create-post' },
+								_react2.default.createElement('img', { src: 'https://s25.postimg.org/j59qawl3z/tumblr_create.png', alt: 'Create Post' })
+							)
 						)
 					)
-				)
+				),
+				_react2.default.createElement('div', { className: 'navigation-divider' })
 			);
 		}
 	});
@@ -28678,10 +28683,10 @@
 
 	exports = module.exports = __webpack_require__(273)();
 	// imports
-	
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Arimo);", ""]);
 	
 	// module
-	exports.push([module.id, "/* FRONT > COMPONENTS > NAVIGATION > Navigation.js*/\n.navigation-container {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: auto;\n  background: palegreen;\n  padding: 10px 10px; }\n\n.navigation-left {\n  display: flex;\n  flex-direction: row;\n  width: 50%;\n  height: auto;\n  background: salmon;\n  margin: 5px 5px; }\n\n.navigation-right {\n  display: flex;\n  flex-direction: row;\n  width: 50%;\n  height: auto;\n  background: sandybrown;\n  margin: 5px 5px; }\n\n.navigation-tumblr-logo {\n  background: lightpink;\n  margin: 5px 5px; }\n\n.navigation-search {\n  background: peachpuff;\n  margin: 5px 5px; }\n\n.navigation-button-timeline {\n  background: lightskyblue;\n  margin: 5px 5px; }\n\n.navigation-button-user-profile {\n  background: mediumpurple;\n  margin: 5px 5px; }\n\n.navigation-button-create-post {\n  background: mistyrose;\n  margin: 5px 5px; }\n", ""]);
+	exports.push([module.id, "/* FRONT > COMPONENTS > NAVIGATION > Navigation.js*/\n.navigation-container {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 45px;\n  padding-top: 10px;\n  top: 0;\n  position: fixed;\n  background-color: #36465D; }\n\n.navigation-divider {\n  top: 0;\n  margin-top: 55px;\n  position: fixed;\n  display: flex;\n  flex-grow: 1;\n  background-color: #999999;\n  height: 1px;\n  width: 100%; }\n\n.navigation-container img {\n  margin-top: 10px;\n  height: 40px;\n  width: auto; }\n\n.navigation-left {\n  display: flex;\n  flex-direction: row;\n  width: 50%;\n  height: auto;\n  margin-top: -10px; }\n\n.navigation-right {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  width: 50%;\n  height: auto;\n  margin-top: -10px; }\n\n.navigation-search {\n  padding-top: 10px;\n  height: 55px;\n  display: flex;\n  justify-content: center;\n  align-content: center;\n  width: auto; }\n\n.navigation-search input {\n  background-image: url(\"https://s25.postimg.org/djc6su8v3/search_icon.png\");\n  background-repeat: no-repeat;\n  font-family: Arimo;\n  font-size: 14px;\n  color: #a7acb5;\n  background-color: #2f3d51;\n  border: none;\n  border-radius: 3px;\n  width: 480px;\n  height: 35px; }\n\n.navigation-button-timeline {\n  align-items: center;\n  justify-content: center; }\n\n.navigation-button-user-profile {\n  align-items: center;\n  justify-content: center; }\n\n.navigation-button-create-post {\n  align-items: center;\n  justify-content: center; }\n", ""]);
 	
 	// exports
 
@@ -28995,65 +29000,7 @@
 
 
 /***/ },
-/* 275 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _actionTest = __webpack_require__(276);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var CreatePost = _react2.default.createClass({
-		displayName: 'CreatePost',
-		componentDidMount: function componentDidMount() {
-			console.log('Mount: ' + this.props.color);
-		},
-		handleSubmit: function handleSubmit(event) {
-			var that = this;
-			event.preventDefault();
-			(0, _actionTest.actionTest)('blue');
-			setTimeout(function () {
-				console.log('Handle submit: ' + that.props.color);
-			}, 2000);
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'div',
-					null,
-					this.props.color
-				),
-				_react2.default.createElement(
-					'form',
-					{ onSubmit: this.handleSubmit },
-					_react2.default.createElement('br', null),
-					_react2.default.createElement('input', { type: 'text', name: 'title', placeholder: 'TITLE' }),
-					_react2.default.createElement('br', null),
-					_react2.default.createElement('input', { type: 'text', name: 'postText', placeholder: 'POST TEXT' }),
-					_react2.default.createElement('br', null),
-					_react2.default.createElement('input', { type: 'text', name: 'tags', placeholder: 'TAGS' }),
-					_react2.default.createElement('br', null),
-					_react2.default.createElement('input', { type: 'submit', value: 'submit' }),
-					_react2.default.createElement('br', null)
-				)
-			);
-		}
-	});
-	
-	exports.default = CreatePost;
-
-/***/ },
+/* 275 */,
 /* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29261,6 +29208,8 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'timeline-post-container' },
+						_react2.default.createElement(_IndividualPost2.default, null),
+						_react2.default.createElement(_IndividualPost2.default, null),
 						_react2.default.createElement(_IndividualPost2.default, null)
 					)
 				)
@@ -29286,6 +29235,14 @@
 	
 	__webpack_require__(284);
 	
+	var _IndividualPostHeader = __webpack_require__(299);
+	
+	var _IndividualPostHeader2 = _interopRequireDefault(_IndividualPostHeader);
+	
+	var _IndividualPostFooter = __webpack_require__(300);
+	
+	var _IndividualPostFooter2 = _interopRequireDefault(_IndividualPostFooter);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var IndividualPost = _react2.default.createClass({
@@ -29303,7 +29260,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-left-photo' },
-							'USER IMAGE'
+							_react2.default.createElement('img', { src: 'https://s25.postimg.org/3rzssjsgv/melanie_user_photo.png', alt: 'Melanie' })
 						)
 					),
 					_react2.default.createElement(
@@ -29312,17 +29269,17 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-right-header' },
-							'POST HEADER'
+							_react2.default.createElement(_IndividualPostHeader2.default, null)
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-right-content' },
-							'POST CONTENT'
+							_react2.default.createElement('img', { src: 'https://derpicdn.net/img/view/2013/5/9/320959__solo_pinkie+pie_animated_questionable_solo+female_plot_upvotes+galore_dance_artist-colon-lizombie_twerking.gif', alt: 'Twerk Pony' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-right-footer' },
-							'POST FOOTER'
+							_react2.default.createElement(_IndividualPostFooter2.default, null)
 						)
 					)
 				)
@@ -29364,10 +29321,10 @@
 
 	exports = module.exports = __webpack_require__(273)();
 	// imports
-	
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Arimo);", ""]);
 	
 	// module
-	exports.push([module.id, "/* FRONT > COMPONENTS > TIMELINE> Timeline.js\nFRONT > COMPONENTS > TIMELINE> IndividualPost.js */\n/* Timeline.js */\n.timeline-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  background: yellow; }\n\n.timeline-post-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  background: yellowgreen; }\n\n/* IndividualPost.js */\n.post-container {\n  display: flex;\n  flex-direction: row;\n  padding: 5px 5px;\n  background: thistle; }\n\n.post-left-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  background: tomato; }\n\n.post-right-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  background: teal; }\n\n.post-left-photo {\n  background: tan;\n  padding: 10px 10px; }\n\n.post-right-header {\n  background: slateblue;\n  margin: 5px 5px;\n  padding: 5px 5px; }\n\n.post-right-content {\n  background: rosybrown;\n  margin: 5px 5px;\n  padding: 5px 5px; }\n\n.post-right-footer {\n  background: rebeccapurple;\n  margin: 5px 5px;\n  padding: 5px 5px; }\n", ""]);
+	exports.push([module.id, "/* FRONT > COMPONENTS > TIMELINE> Timeline.js\nFRONT > COMPONENTS > TIMELINE> IndividualPost.js */\n/* Timeline.js */\n.timeline-container {\n  display: flex;\n  flex-direction: column; }\n\n.timeline-post-container {\n  display: flex;\n  flex-direction: column; }\n\n/* IndividualPost.js */\n.post-container {\n  display: flex;\n  flex-direction: row;\n  margin-bottom: 20px; }\n\n.post-left-container {\n  display: flex;\n  flex-direction: column;\n  width: 65px;\n  margin-right: 15px; }\n\n.post-left-container img {\n  width: 65px;\n  height: 65px;\n  border-radius: 5px; }\n\n.post-right-container {\n  width: 100%;\n  display: flex;\n  flex-grow: 1;\n  flex-direction: column;\n  background-color: white;\n  border-radius: 3px; }\n\n.post-left-photo {\n  width: 65px; }\n\n.post-right-header {\n  margin-top: 5px;\n  margin-bottom: 5px; }\n\n.post-right-content {\n  padding-top: 5px;\n  padding-bottom: 5px; }\n\n.post-right-content img {\n  max-width: 100%; }\n\n.post-right-footer {\n  margin-top: 5px;\n  margin-bottom: 5px; }\n\n/* INDIVIDUALPOSTHEADER.js */\n.individual-post-header-container {\n  background-color: white;\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  flex-grow: 1;\n  height: 25px;\n  align-content: center;\n  font-family: \"Arimo\";\n  font-size: 12px;\n  color: #aaaaaa; }\n\n.individual-post-header-bold-font {\n  font-weight: bold;\n  color: #999999;\n  font-size: 13px; }\n\n.individual-post-header-left {\n  height: 25px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n  padding-left: 20px;\n  width: 80%; }\n\n.individual-post-header-right {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: 25px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n  padding-right: 20px;\n  width: 20%; }\n\n/* INDIVIDUALPOSTFOOTER.js */\n.footer-container {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  justify-content: center;\n  align-items: center; }\n\n.footer-left {\n  display: flex;\n  flex-direction: row;\n  width: 50%;\n  justify-content: flex-start;\n  align-items: center;\n  padding-left: 20px;\n  font-family: \"Arimo\";\n  font-weight: bold;\n  color: #999999;\n  font-size: 13px; }\n\n.footer-right {\n  display: flex;\n  flex-direction: row;\n  width: 50%;\n  justify-content: flex-end;\n  align-content: center;\n  padding-right: 20px; }\n", ""]);
 	
 	// exports
 
@@ -29386,14 +29343,6 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _RecommendBlogs = __webpack_require__(287);
-	
-	var _RecommendBlogs2 = _interopRequireDefault(_RecommendBlogs);
-	
-	var _BlogRadar = __webpack_require__(290);
-	
-	var _BlogRadar2 = _interopRequireDefault(_BlogRadar);
-	
 	__webpack_require__(288);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29407,63 +29356,18 @@
 				_react2.default.createElement(
 					'div',
 					{ className: 'sidebar-container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'sidebar-recommend-blogs-container' },
-						_react2.default.createElement(_RecommendBlogs2.default, null)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'sidebar-blogradar-container' },
-						_react2.default.createElement(_BlogRadar2.default, null)
-					)
+					_react2.default.createElement('div', { className: 'sidebar-recommend-blogs-container' }),
+					_react2.default.createElement('div', { className: 'sidebar-blogradar-container' })
 				)
 			);
 		}
 	});
-	
+	// import RecommendBlogs from './RecommendBlogs';
+	// import BlogRadar from './BlogRadar';
 	exports.default = Sidebar;
 
 /***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	__webpack_require__(288);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var RecommendBlogs = _react2.default.createClass({
-		displayName: 'RecommendBlogs',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'div',
-					{ className: 'recommend-blogs-container' },
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Recommended Blogs Component'
-					)
-				)
-			);
-		}
-	});
-	
-	exports.default = RecommendBlogs;
-
-/***/ },
+/* 287 */,
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29498,47 +29402,13 @@
 	
 	
 	// module
-	exports.push([module.id, "/* FRONT > COMPONENTS > SIDEBAR > Sidebar.js\nFRONT > COMPONENTS > SIDEBAR > RecommendBlogs.js\nFRONT > COMPONENTS > SIDEBAR > BlogRadar.js */\n/* Sidebar.js */\n.sidebar-container {\n  display: flex;\n  flex-direction: column;\n  padding: 10px 10px; }\n\n.sidebar-recommend-blogs-container {\n  display: flex;\n  flex-direction: row;\n  flex-grow: 1;\n  width: 100%;\n  background: springgreen;\n  padding: 5px 5px; }\n\n.sidebar-blogradar-container {\n  display: flex;\n  background: turquoise;\n  padding: 5px 5px; }\n\n/* RecommendBlogs.js */\n.recommend-blogs-container {\n  display: flex;\n  flex-direction: row;\n  width: 100%; }\n\n/* BlogRadar */\n", ""]);
+	exports.push([module.id, "/* FRONT > COMPONENTS > SIDEBAR > Sidebar.js\nFRONT > COMPONENTS > SIDEBAR > RecommendBlogs.js\nFRONT > COMPONENTS > SIDEBAR > BlogRadar.js */\n/* Sidebar.js */\n.sidebar-container {\n  display: flex;\n  flex-direction: column;\n  padding: 10px 10px; }\n\n.sidebar-recommend-blogs-container {\n  display: flex;\n  flex-direction: row;\n  flex-grow: 1;\n  width: 100%;\n  padding: 5px 5px; }\n\n.sidebar-blogradar-container {\n  display: flex;\n  padding: 5px 5px; }\n\n/* RecommendBlogs.js */\n.recommend-blogs-container {\n  display: flex;\n  flex-direction: row;\n  width: 100%; }\n\n/* BlogRadar */\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	__webpack_require__(288);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var BlogRadar = _react2.default.createClass({
-		displayName: 'BlogRadar',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'h3',
-					null,
-					'Blog Radar'
-				)
-			);
-		}
-	});
-	
-	exports.default = BlogRadar;
-
-/***/ },
+/* 290 */,
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29573,40 +29443,245 @@
 	
 	
 	// module
-	exports.push([module.id, "/* FRONT > COMPONENTS > HOME > Home.js */\n/* Home.js */\n.home-container {\n  display: flex;\n  flex-direction: row;\n  background: olive;\n  padding: 10px 10px; }\n\n.timeline-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  width: 70%;\n  background: mediumspringgreen; }\n\n.sidebar-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  width: 30%;\n  background: mediumturquoise; }\n", ""]);
+	exports.push([module.id, "/* FRONT > COMPONENTS > HOME > Home.js */\n/* Home.js */\n.home-container {\n  display: flex;\n  flex-direction: row;\n  width: 990px;\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 85px; }\n\n.timeline-container {\n  display: flex;\n  flex-direction: column;\n  width: 635px;\n  margin-right: 15px; }\n\n.sidebar-container {\n  display: flex;\n  flex-direction: column;\n  padding: 5px 5px;\n  width: 325px; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 293 */
+/* 293 */,
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(295);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(274)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./main.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./main.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(273)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "body {\n  background-color: #36465D; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
-	exports.CreatePostContainer = undefined;
 	
-	var _reactRedux = __webpack_require__(233);
+	var _react = __webpack_require__(1);
 	
-	var _CreatePost = __webpack_require__(275);
+	var _react2 = _interopRequireDefault(_react);
 	
-	var _CreatePost2 = _interopRequireDefault(_CreatePost);
+	var _actionTest = __webpack_require__(276);
+	
+	__webpack_require__(297);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    title: state.createPostReducer.title,
-	    postText: state.createPostReducer.postText,
-	    tags: state.createPostReducer.tags,
-	    color: state.createPostReducer.color
-	  };
-	};
+	var CreatePost = _react2.default.createClass({
+		displayName: 'CreatePost',
+		componentDidMount: function componentDidMount() {
+			console.log('Mount: ' + this.props.color);
+		},
+		handleSubmit: function handleSubmit(event) {
+			var that = this;
+			event.preventDefault();
+			(0, _actionTest.actionTest)('blue');
+			setTimeout(function () {
+				console.log('Handle submit: ' + that.props.color);
+			}, 2000);
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'create-post-container' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'create-post-input-container' },
+						_react2.default.createElement(
+							'h1',
+							null,
+							'CREATE POST'
+						)
+					)
+				)
+			);
+		}
+	});
 	
-	var CreatePostContainer = exports.CreatePostContainer = (0, _reactRedux.connect)(mapStateToProps)(_CreatePost2.default);
+	exports.default = CreatePost;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(298);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(274)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(273)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".create-post-container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  background-color: red;\n  margin-top: 55px;\n  margin-bottom: -55px; }\n\n.create-post-input-container {\n  width: 500px;\n  height: 500px;\n  background-color: white;\n  border-radius: 3px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var IndividualPostHeader = _react2.default.createClass({
+		displayName: "IndividualPostHeader",
+		render: function render() {
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"div",
+					{ className: "individual-post-header-container" },
+					_react2.default.createElement(
+						"div",
+						{ className: "individual-post-header-left" },
+						"Here's a blog: ",
+						_react2.default.createElement(
+							"span",
+							{ className: "individual-post-header-bold-font" },
+							"ItsMelBaby69"
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "individual-post-header-right" },
+						_react2.default.createElement(
+							"div",
+							{ className: "individual-post-header-delete" },
+							_react2.default.createElement("img", { src: "https://s25.postimg.org/ykou84fdr/tumblr_header_icon_x.png", alt: "X" })
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "individual-post-header-navigator" },
+							_react2.default.createElement("img", { src: "https://s25.postimg.org/5ts0i29jz/tumblr_header_icon_navigation.png", alt: "Navigator" })
+						)
+					)
+				)
+			);
+		}
+	});
+	
+	exports.default = IndividualPostHeader;
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var IndividualPostFooter = _react2.default.createClass({
+		displayName: "IndividualPostFooter",
+		render: function render() {
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"div",
+					{ className: "footer-container" },
+					_react2.default.createElement(
+						"div",
+						{ className: "footer-left" },
+						"1,275 notes"
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "footer-right" },
+						_react2.default.createElement("img", { src: "https://s25.postimg.org/v73bn3b33/tumblr_header_icon_heart.png", alt: "Like This Photo!" })
+					)
+				)
+			);
+		}
+	});
+	
+	exports.default = IndividualPostFooter;
 
 /***/ }
 /******/ ]);
