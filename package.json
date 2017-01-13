@@ -1,5 +1,5 @@
 {
-  "name": "tumblr-clone",
+  "name": "tumblr",
   "version": "0.1.0",
   "description": "Scaffolding for React, Node, Express, Sequelize projects",
   "scripts": {

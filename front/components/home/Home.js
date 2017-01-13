@@ -4,6 +4,9 @@ import Sidebar from '../sidebar/Sidebar.js';
 import '../../styles/home/home.css';
 import {TimelineContainer} from 'TimelineContainer';
 
+import Footer from '../footer/footer.js';
+import '../../styles/footer/footer.css';
+
 const Home = React.createClass({
 	render() {
 		return(

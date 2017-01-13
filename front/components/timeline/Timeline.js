@@ -6,7 +6,7 @@ import {displayPosts} from 'postActions';
 
 const Timeline = React.createClass({
 // on componentDidMount we need to fetch time line with posts from all the users you follow
-	componentDidMount: function() {
+	componentDidMount() {
 		console.log('Timeline mounted.')
 		$.ajax({
 			url: '/api/post/',
@@ -17,13 +17,12 @@ const Timeline = React.createClass({
 			displayPosts(posts);
 		})
 	},
-
+  
 	render() {
 		console.log('PROPS:', this.props.posts);
 		return(
 			<div>
 				<div className="timeline-container">
-				
 				{this.props.posts ? this.props.posts.map(function(val, idx) {
 					return (
 						<div key={idx} className="timeline-post-container">

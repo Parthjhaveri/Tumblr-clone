@@ -1,0 +1,15 @@
+.foot {
+	width: auto;
+	height: auto;
+	padding: 50px;
+	background-color: #1a1a1a;
+}
+
+.footerText {
+	display: inline-block;
+	font-size: 18px;
+	color: white;
+	font-family: sans-serif;
+	margin-left: 10%;
+	margin-right: 10%;
+}
