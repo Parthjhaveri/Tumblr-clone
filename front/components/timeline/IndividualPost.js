@@ -19,7 +19,7 @@ const IndividualPost = React.createClass({
 							<IndividualPostHeader />
 						</div>
 						<div className="post-right-content">
-							<img src="https://derpicdn.net/img/view/2013/5/9/320959__solo_pinkie+pie_animated_questionable_solo+female_plot_upvotes+galore_dance_artist-colon-lizombie_twerking.gif" alt="Twerk Pony" /> 
+							<img src={this.props.content} alt="Twerk Pony" /> 
 						</div>
 						<div className="post-right-footer">
 							<IndividualPostFooter />

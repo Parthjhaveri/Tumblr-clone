@@ -4,6 +4,7 @@ const Post = require('../../models').Post;
 const Tags = require('../../models').Tag;
 const User = require('../../models').User;
 
+
 /////////////////////
 ////FUNCTION/////////
 /////////////////////
@@ -49,7 +50,9 @@ const makePost = ((request,response) => {
 
 // GET ONE POST
 const getPost = ((request,response) => {
-	Post.findAll()
+	Post.findAll({
+		include: [User]
+	})
 		.then(data => {
       		console.log('DATA:', data)
 			response.send(data)
@@ -77,6 +80,27 @@ const getUserPosts = (req, res) => {
 	.catch( (err) => {
 		console.log("ERROR GETTING USERS POSTS:", err)
 		res.sendStatus(500)
+	})
+}
+
+// Add Note
+const addNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.addUser([req.params.userId])
+	})
+	.then(()=> {
+		res.send('New note has been added.')
+	})
+}
+
+const removeNote = (req, res) => {
+	Post.findById(req.params.postId)
+	.then(post => {
+		post.removeUser(req.params.userId)
+	})
+	.then(() => {
+		res.send('Note has been removed.')
 	})
 }
 
@@ -140,7 +164,31 @@ const seeFollowing = () => {
 		})
 }
 
+function getNotesForOnePost(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers()
+	})
+	.then(function(users) {
+		// console.log(users);
+		res.send(users);
+	})
+}
 
+function getNoteForOnePostByOneUser(req, res) {
+	Post.findById(req.params.postId)
+	.then(function(post) {
+		return post.getUsers({
+			where: {
+				id: req.params.userId
+			}
+		})
+	})
+	.then(function(users) {
+		// console.log(users);
+		res.send(users);
+	})
+}
 
 /////////////////////
 //////ROUTE//////////
@@ -149,8 +197,17 @@ router.route('/')
 	.get(getPost)
 	.post(makePost)
 
+router.route('/:postId/:userId')
+	.post(addNote)
+	.delete(removeNote)
+	.get(getNoteForOnePostByOneUser)
+
+router.route('/:postId')
+	.get(getNotesForOnePost)
+
 	// router.route('/tag')
 	// .post(makeTag)
+
 
 /////////////////////
 /////EXPORTS////////

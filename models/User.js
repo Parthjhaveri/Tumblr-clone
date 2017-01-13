@@ -37,10 +37,12 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         User.belongsToMany(User, { as: 'Following', through: 'Following_Trackers' });
         User.hasMany(models.Post);
+        User.belongsToMany(models.Post, {through: 'Notes'})
       }
     }
   });
 
   return User;
 }
+
 

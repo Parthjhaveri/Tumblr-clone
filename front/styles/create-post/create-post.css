@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+* {
+	color: #aaaaaa;
+	font-family: "Arimo";
+	font-size: 12px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
 .create-post-container {
 	width: 100vw;
 	height: auto;
@@ -5,14 +17,108 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: red;
 	margin-top: 55px;
-	margin-bottom: -55px;
 }
 
 .create-post-input-container {
+	display: flex;
+	flex-direction: column;
 	width: 500px;
-	height: 500px;
+	height: 300px;
 	background-color: white;
-	border-radius: 3px;
+	border-radius: 4px;
+	margin-top: 30px;
+}
+
+.create-post-input-header {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.create-post-input-header-userid {
+	display: flex;
+	width: 50%;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 20px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.create-post-input-header-settings {
+	display: flex;
+	width: 50%;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 20px;
+}
+
+.create-post-input-title {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+}
+
+.create-post-input-title input {
+	height: 40px;
+	font-size: 32px;
+	border: none;
+	color: #333333;
+}
+
+.create-post-input-text {
+	display: flex;
+	width: 100%;
+	padding-left: 20px;
+}
+
+.create-post-input-text textarea {
+	font-size: 15px;
+	border: none;
+	color: #333333;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.create-post-input-tags {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+}
+
+.create-post-input-tags input {
+	font-size: 13px;
+	border: none;
+	color: #333333;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.create-post-input-footer {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+}
+
+.create-post-input-footer-close {
+	display: flex;
+	width: 50%;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 20px;
+}
+
+.create-post-input-footer-post {
+	display: flex;
+	width: 50%;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 20px;
 }
