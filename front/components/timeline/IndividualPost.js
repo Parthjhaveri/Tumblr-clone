@@ -4,6 +4,7 @@ import IndividualPostHeader from './IndividualPostHeader';
 import IndividualPostFooter from './IndividualPostFooter';
 
 const IndividualPost = React.createClass({
+
 	render() {
 		return(
 			<div>
