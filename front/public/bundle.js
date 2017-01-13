@@ -60,7 +60,7 @@
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Home = __webpack_require__(287);
+	var _Home = __webpack_require__(288);
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
@@ -68,9 +68,9 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _CreatePostContainer = __webpack_require__(299);
+	var _CreatePostContainer = __webpack_require__(302);
 	
-	var _LoginContainer = __webpack_require__(301);
+	var _LoginContainer = __webpack_require__(307);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -29058,7 +29058,7 @@
 	
 	var _formActions = __webpack_require__(280);
 	
-	var _jquery = __webpack_require__(286);
+	var _jquery = __webpack_require__(287);
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
@@ -29234,11 +29234,16 @@
 	
 	var _loginFormReducer2 = _interopRequireDefault(_loginFormReducer);
 	
+	var _postReducer = __webpack_require__(286);
+	
+	var _postReducer2 = _interopRequireDefault(_postReducer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var rootReducer = (0, _redux.combineReducers)({
 	  createPostReducer: _createPostReducer2.default,
-	  loginFormReducer: _loginFormReducer2.default
+	  loginFormReducer: _loginFormReducer2.default,
+	  postReducer: _postReducer2.default
 	});
 	
 	exports.default = rootReducer;
@@ -29297,6 +29302,8 @@
 	var LOGIN_WITH_USERNAME = exports.LOGIN_WITH_USERNAME = "LOGIN_WITH_USERNAME";
 	
 	var SET_USER_INFO = exports.SET_USER_INFO = "SET_USER_INFO";
+	
+	var DISPLAY_POSTS = exports.DISPLAY_POSTS = "DISPLAY_POSTS";
 
 /***/ },
 /* 285 */
@@ -29336,6 +29343,38 @@
 
 /***/ },
 /* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _actionTypes = __webpack_require__(284);
+	
+	var _init = {
+	  posts: null
+	};
+	
+	function postReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _init;
+	  var action = arguments[1];
+	
+	  var stateCopy = Object.assign({}, state);
+	  switch (action.type) {
+	    case _actionTypes.DISPLAY_POSTS:
+	      stateCopy.posts = action.posts;
+	      return stateCopy;
+	    default:
+	      return stateCopy;
+	  }
+	};
+	
+	exports.default = postReducer;
+
+/***/ },
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -39561,7 +39600,7 @@
 
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39574,15 +39613,17 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Timeline = __webpack_require__(288);
+	var _Timeline = __webpack_require__(289);
 	
 	var _Timeline2 = _interopRequireDefault(_Timeline);
 	
-	var _Sidebar = __webpack_require__(294);
+	var _Sidebar = __webpack_require__(296);
 	
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 	
-	__webpack_require__(297);
+	__webpack_require__(299);
+	
+	var _TimelineContainer = __webpack_require__(301);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39598,7 +39639,7 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'timeline-container' },
-						_react2.default.createElement(_Timeline2.default, null)
+						_react2.default.createElement(_TimelineContainer.TimelineContainer, null)
 					),
 					_react2.default.createElement(
 						'div',
@@ -39611,53 +39652,6 @@
 	});
 	
 	exports.default = Home;
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _IndividualPost = __webpack_require__(289);
-	
-	var _IndividualPost2 = _interopRequireDefault(_IndividualPost);
-	
-	__webpack_require__(290);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Timeline = _react2.default.createClass({
-		displayName: 'Timeline',
-	
-		// on componentDidMount we need to fetch time line with posts from all the users you follow
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'div',
-					{ className: 'timeline-container' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'timeline-post-container' },
-						_react2.default.createElement(_IndividualPost2.default, null),
-						_react2.default.createElement(_IndividualPost2.default, null),
-						_react2.default.createElement(_IndividualPost2.default, null)
-					)
-				)
-			);
-		}
-	});
-	
-	exports.default = Timeline;
 
 /***/ },
 /* 289 */
@@ -39673,13 +39667,81 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(290);
+	var _jquery = __webpack_require__(287);
 	
-	var _IndividualPostHeader = __webpack_require__(292);
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _IndividualPost = __webpack_require__(290);
+	
+	var _IndividualPost2 = _interopRequireDefault(_IndividualPost);
+	
+	__webpack_require__(291);
+	
+	var _postActions = __webpack_require__(295);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Timeline = _react2.default.createClass({
+		displayName: 'Timeline',
+	
+		// on componentDidMount we need to fetch time line with posts from all the users you follow
+		componentDidMount: function componentDidMount() {
+			console.log('Timeline mounted.');
+			_jquery2.default.ajax({
+				url: '/api/post/',
+				type: 'GET'
+			}).done(function (posts) {
+				console.log(posts);
+				(0, _postActions.displayPosts)(posts);
+			});
+		},
+	
+		render: function render() {
+			console.log('PROPS:', this.props.posts);
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'timeline-container' },
+					this.props.posts ? this.props.posts.map(function (val, idx) {
+						return _react2.default.createElement(
+							'div',
+							{ key: idx, className: 'timeline-post-container' },
+							_react2.default.createElement(_IndividualPost2.default, { userId: val.UserId,
+								id: val.id,
+								title: val.title,
+								content: val.content })
+						);
+					}) : null
+				)
+			);
+		}
+	});
+	
+	exports.default = Timeline;
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	__webpack_require__(291);
+	
+	var _IndividualPostHeader = __webpack_require__(293);
 	
 	var _IndividualPostHeader2 = _interopRequireDefault(_IndividualPostHeader);
 	
-	var _IndividualPostFooter = __webpack_require__(293);
+	var _IndividualPostFooter = __webpack_require__(294);
 	
 	var _IndividualPostFooter2 = _interopRequireDefault(_IndividualPostFooter);
 	
@@ -39714,7 +39776,7 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'post-right-content' },
-							_react2.default.createElement('img', { src: 'https://derpicdn.net/img/view/2013/5/9/320959__solo_pinkie+pie_animated_questionable_solo+female_plot_upvotes+galore_dance_artist-colon-lizombie_twerking.gif', alt: 'Twerk Pony' })
+							_react2.default.createElement('img', { src: this.props.content, alt: 'Twerk Pony' })
 						),
 						_react2.default.createElement(
 							'div',
@@ -39730,13 +39792,13 @@
 	exports.default = IndividualPost;
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(291);
+	var content = __webpack_require__(292);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -39756,7 +39818,7 @@
 	}
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -39770,7 +39832,7 @@
 
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39826,7 +39888,7 @@
 	exports.default = IndividualPostHeader;
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39869,7 +39931,33 @@
 	exports.default = IndividualPostFooter;
 
 /***/ },
-/* 294 */
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.displayPosts = displayPosts;
+	
+	var _store = __webpack_require__(281);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _actionTypes = __webpack_require__(284);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function displayPosts(posts) {
+	  _store2.default.dispatch({
+	    type: _actionTypes.DISPLAY_POSTS,
+	    posts: posts
+	  });
+	}
+
+/***/ },
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39882,7 +39970,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(295);
+	__webpack_require__(297);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -39906,13 +39994,13 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(296);
+	var content = __webpack_require__(298);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -39932,7 +40020,7 @@
 	}
 
 /***/ },
-/* 296 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -39946,13 +40034,13 @@
 
 
 /***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(298);
+	var content = __webpack_require__(300);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(274)(content, {});
@@ -39972,7 +40060,7 @@
 	}
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(273)();
@@ -39986,7 +40074,35 @@
 
 
 /***/ },
-/* 299 */
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.TimelineContainer = undefined;
+	
+	var _reactRedux = __webpack_require__(233);
+	
+	var _Timeline = __webpack_require__(289);
+	
+	var _Timeline2 = _interopRequireDefault(_Timeline);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    currentUser: state.loginFormReducer.currentUser,
+	    posts: state.postReducer.posts
+	  };
+	};
+	
+	var TimelineContainer = exports.TimelineContainer = (0, _reactRedux.connect)(mapStateToProps)(_Timeline2.default);
+
+/***/ },
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39998,7 +40114,7 @@
 	
 	var _reactRedux = __webpack_require__(233);
 	
-	var _CreatePost = __webpack_require__(300);
+	var _CreatePost = __webpack_require__(303);
 	
 	var _CreatePost2 = _interopRequireDefault(_CreatePost);
 	
@@ -40017,7 +40133,7 @@
 	var CreatePostContainer = exports.CreatePostContainer = (0, _reactRedux.connect)(mapStateToProps)(_CreatePost2.default);
 
 /***/ },
-/* 300 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40030,15 +40146,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _jquery = __webpack_require__(286);
+	var _jquery = __webpack_require__(287);
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
-	var _actionTest = __webpack_require__(302);
+	var _actionTest = __webpack_require__(304);
 	
 	var _formActions = __webpack_require__(280);
 	
-	__webpack_require__(303);
+	__webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -40131,7 +40247,71 @@
 	exports.default = CreatePost;
 
 /***/ },
-/* 301 */
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.actionTest = actionTest;
+	
+	var _store = __webpack_require__(281);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function actionTest(data) {
+	  _store2.default.dispatch({
+	    type: 'ACTION_TEST',
+	    data: data
+	  });
+	}
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(306);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(274)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 306 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(273)();
+	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Arimo);", ""]);
+	
+	// module
+	exports.push([module.id, "* {\n  color: #aaaaaa;\n  font-family: \"Arimo\";\n  font-size: 12px; }\n\ntextarea:focus, input:focus {\n  outline: none; }\n\n.create-post-container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin-top: 55px; }\n\n.create-post-input-container {\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  height: 300px;\n  background-color: white;\n  border-radius: 4px;\n  margin-top: 30px; }\n\n.create-post-input-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-header-userid {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px;\n  font-weight: bold;\n  color: #666666; }\n\n.create-post-input-header-settings {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n\n.create-post-input-title {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-title input {\n  height: 40px;\n  font-size: 32px;\n  border: none;\n  color: #333333; }\n\n.create-post-input-text {\n  display: flex;\n  width: 100%;\n  padding-left: 20px; }\n\n.create-post-input-text textarea {\n  font-size: 15px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-tags {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-tags input {\n  font-size: 13px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-footer {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center; }\n\n.create-post-input-footer-close {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px; }\n\n.create-post-input-footer-post {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40157,70 +40337,6 @@
 	};
 	
 	var LoginContainer = exports.LoginContainer = (0, _reactRedux.connect)(mapStateToProps)(_Login2.default);
-
-/***/ },
-/* 302 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.actionTest = actionTest;
-	
-	var _store = __webpack_require__(281);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function actionTest(data) {
-	  _store2.default.dispatch({
-	    type: 'ACTION_TEST',
-	    data: data
-	  });
-	}
-
-/***/ },
-/* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(304);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(274)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./create-post.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(273)();
-	// imports
-	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Arimo);", ""]);
-	
-	// module
-	exports.push([module.id, "* {\n  color: #aaaaaa;\n  font-family: \"Arimo\";\n  font-size: 12px; }\n\ntextarea:focus, input:focus {\n  outline: none; }\n\n.create-post-container {\n  width: 100vw;\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin-top: 55px; }\n\n.create-post-input-container {\n  display: flex;\n  flex-direction: column;\n  width: 500px;\n  height: 300px;\n  background-color: white;\n  border-radius: 4px;\n  margin-top: 30px; }\n\n.create-post-input-header {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-header-userid {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px;\n  font-weight: bold;\n  color: #666666; }\n\n.create-post-input-header-settings {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n\n.create-post-input-title {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-title input {\n  height: 40px;\n  font-size: 32px;\n  border: none;\n  color: #333333; }\n\n.create-post-input-text {\n  display: flex;\n  width: 100%;\n  padding-left: 20px; }\n\n.create-post-input-text textarea {\n  font-size: 15px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-tags {\n  display: flex;\n  width: 100%;\n  align-items: center;\n  padding-left: 20px; }\n\n.create-post-input-tags input {\n  font-size: 13px;\n  border: none;\n  color: #333333;\n  margin-top: 15px;\n  margin-bottom: 15px; }\n\n.create-post-input-footer {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  align-items: center; }\n\n.create-post-input-footer-close {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-start;\n  padding-left: 20px; }\n\n.create-post-input-footer-post {\n  display: flex;\n  width: 50%;\n  align-items: center;\n  justify-content: flex-end;\n  padding-right: 20px; }\n", ""]);
-	
-	// exports
-
 
 /***/ }
 /******/ ]);

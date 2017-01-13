@@ -4,3 +4,5 @@ export const LOGIN_WITH_USERNAME = "LOGIN_WITH_USERNAME";
 
 export const SET_USER_INFO = "SET_USER_INFO";
 
+export const DISPLAY_POSTS = "DISPLAY_POSTS";
+

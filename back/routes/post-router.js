@@ -50,7 +50,9 @@ const makePost = ((request,response) => {
 
 // GET ONE POST
 const getPost = ((request,response) => {
-	Post.findAll()
+	Post.findAll({
+		include: [User]
+	})
 		.then(data => {
       		console.log('DATA:', data)
 			response.send(data)
